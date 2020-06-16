@@ -20,13 +20,13 @@ import {
   SearchAndSortSearchButton as FilterPaneToggle,
 } from '@folio/stripes/smart-components';
 
-import Filters from './Filters';
-
 import {
   EResourceType,
   getResourceIdentifier,
   getSiblingIdentifier
-} from './utilities';
+} from '@folio/stripes-erm-components';
+import Filters from './Filters';
+
 
 import css from './View.css';
 
