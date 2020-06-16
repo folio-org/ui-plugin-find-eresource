@@ -48,7 +48,7 @@
     "permissionSets": [
       {
         "permissionName": "ui-plugin-find-eresource.search",
-        "displayName": "Find Agreement Plugin: Search eresources",
+        "displayName": "Find Eresource Plugin: Search eresources",
         "visible": true
       }
     ]

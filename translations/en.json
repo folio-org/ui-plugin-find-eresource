@@ -1,3 +1,22 @@
 {
-  "meta.title": "ERM Eresource finder (plugin)"
+  "meta.title": "Eresource Finder Plugin",
+  "permission.search": "Find Eresource Plugin: Search eresources",
+
+  "selectEresource": "Select eresource",
+
+  "eresources": "Eresources",
+  "package": "Package",
+  "searchInputLabel": "Search eresources",
+  "title": "Title",
+
+  "prop.eIssn": "ISSN (Online)",
+  "prop.isbn": "ISBN",
+  "prop.isPackage": "Is package",
+  "prop.name": "Name",
+  "prop.sourceKb": "External data source",
+  "prop.type": "Type",
+  "prop.pIssn": "ISSN (Print)",
+
+  "yes": "Yes",
+  "no": "No"
 }
