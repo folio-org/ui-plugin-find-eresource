@@ -27,7 +27,6 @@ import {
 } from '@folio/stripes-erm-components';
 import Filters from './Filters';
 
-
 import css from './View.css';
 
 const propTypes = {
@@ -39,6 +38,7 @@ const propTypes = {
   queryGetter: PropTypes.func.isRequired,
   querySetter: PropTypes.func.isRequired,
   selectedRecordId: PropTypes.string,
+  showPackages: PropTypes.bool,
   source: PropTypes.shape({
     loaded: PropTypes.func,
     totalCount: PropTypes.func,
@@ -54,6 +54,7 @@ const EResources = ({
   querySetter,
   selectedRecordId,
   source,
+  showPackages,
   visibleColumns
 }) => {
   const count = source?.totalCount() ?? 0;
@@ -64,13 +65,12 @@ const EResources = ({
 
   const [filterPaneIsVisible, setFilterPaneIsVisible] = useState(true);
   const toggleFilterPane = () => setFilterPaneIsVisible(!filterPaneIsVisible);
+  const initialFilterState = showPackages ? { class: ['package'] } : {};
 
   return (
     <div data-test-eresources>
       <SearchAndSortQuery
-        initialFilterState={{
-          class: ['package']
-        }}
+        initialFilterState={initialFilterState}
         initialSearchState={{ query: '' }}
         initialSortState={{ sort: 'name' }}
         queryGetter={queryGetter}
@@ -141,11 +141,13 @@ const EResources = ({
                           </Icon>
                         </Button>
                       </div>
-                      <Filters
-                        activeFilters={activeFilters.state}
-                        data={data}
-                        filterHandlers={getFilterHandlers()}
-                      />
+                      {!showPackages &&
+                        <Filters
+                          activeFilters={activeFilters.state}
+                          data={data}
+                          filterHandlers={getFilterHandlers()}
+                        />
+                      }
                     </form>
                   </Pane>
                 }

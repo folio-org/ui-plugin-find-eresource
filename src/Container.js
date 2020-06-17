@@ -29,7 +29,6 @@ export default class Container extends React.Component {
         }],
         filterKeys: {
           remoteKb: 'remoteKb.id',
-          package: 'org.olf.kb.Pkg'
         },
         queryGetter: r => r.eresourceSearchParams,
       }),
@@ -47,7 +46,6 @@ export default class Container extends React.Component {
     },
     eresourceSearchParams: {
       initialValue: {
-        filters: 'class.package',
         sort: 'name',
       }
     },
@@ -58,9 +56,14 @@ export default class Container extends React.Component {
     mutator: PropTypes.object,
     onSelectRow: PropTypes.func.isRequired,
     resources: PropTypes.object,
+    showPackages: PropTypes.bool,
     stripes: PropTypes.shape({
       logger: PropTypes.object,
     }),
+  }
+
+  static defaultProps = {
+    showPackages: false
   }
 
   constructor(props) {
@@ -76,10 +79,6 @@ export default class Container extends React.Component {
     if (this.searchField.current) {
       this.searchField.current.focus();
     }
-
-    this.props.mutator.eresourceSearchParams.update({
-      filters: 'class.package'
-    });
   }
 
   handleNeedMoreData = (_askAmount, index) => {
@@ -103,7 +102,7 @@ export default class Container extends React.Component {
   }
 
   render() {
-    const { onSelectRow, resources } = this.props;
+    const { onSelectRow, resources, showPackages } = this.props;
 
     if (this.source) {
       this.source.update(this.props, 'eresources');
@@ -120,6 +119,7 @@ export default class Container extends React.Component {
         onSelectRow={onSelectRow}
         queryGetter={this.queryGetter}
         querySetter={this.querySetter}
+        showPackages={showPackages}
         source={this.source}
         syncToLocationSearch={false}
       />
