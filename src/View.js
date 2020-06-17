@@ -35,6 +35,7 @@ const propTypes = {
     eresources: PropTypes.array.isRequired,
   }),
   onNeedMoreData: PropTypes.func.isRequired,
+  onSelectRow: PropTypes.func.isRequired,
   queryGetter: PropTypes.func.isRequired,
   querySetter: PropTypes.func.isRequired,
   selectedRecordId: PropTypes.string,
@@ -50,6 +51,7 @@ const EResources = ({
   children,
   data = {},
   onNeedMoreData,
+  onSelectRow,
   queryGetter,
   querySetter,
   selectedRecordId,
@@ -141,13 +143,12 @@ const EResources = ({
                           </Icon>
                         </Button>
                       </div>
-                      {!showPackages &&
-                        <Filters
-                          activeFilters={activeFilters.state}
-                          data={data}
-                          filterHandlers={getFilterHandlers()}
-                        />
-                      }
+                      <Filters
+                        activeFilters={activeFilters.state}
+                        data={data}
+                        filterHandlers={getFilterHandlers()}
+                        showPackages={showPackages}
+                      />
                     </form>
                   </Pane>
                 }
@@ -229,6 +230,7 @@ const EResources = ({
                     isSelected={({ item }) => item.id === selectedRecordId}
                     onHeaderClick={onSort}
                     onNeedMoreData={onNeedMoreData}
+                    onRowClick={onSelectRow}
                     pageAmount={100}
                     pagingType="click"
                     sortDirection={sortOrder.startsWith('-') ? 'descending' : 'ascending'}

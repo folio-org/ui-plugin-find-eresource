@@ -14,13 +14,15 @@ export default class EResourceFilters extends React.Component {
     activeFilters: PropTypes.object,
     data: PropTypes.object.isRequired,
     filterHandlers: PropTypes.object,
+    showPackages: PropTypes.bool,
   };
 
   static defaultProps = {
     activeFilters: {
       class: [],
       type: [],
-    }
+    },
+    showPackages: false
   };
 
   state = {
@@ -131,10 +133,11 @@ export default class EResourceFilters extends React.Component {
   }
 
   render() {
+    const { showPackages } = this.props;
     return (
       <AccordionSet>
-        {this.renderCheckboxFilter('type')}
-        {this.renderIsPackageFilter()}
+        {!showPackages && this.renderCheckboxFilter('type')}
+        {!showPackages && this.renderIsPackageFilter()}
         {this.renderRemoteKbFilter()}
       </AccordionSet>
     );
