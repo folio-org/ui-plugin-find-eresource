@@ -9,13 +9,13 @@
   "searchInputLabel": "Search e-resources",
   "title": "Title",
 
-  "prop.eIssn": "ISSN (Online)",
+  "prop.eissn": "ISSN (Online)",
   "prop.isbn": "ISBN",
   "prop.isPackage": "Is package",
   "prop.name": "Name",
   "prop.sourceKb": "External data source",
   "prop.type": "Type",
-  "prop.pIssn": "ISSN (Print)",
+  "prop.pissn": "ISSN (Print)",
 
   "yes": "Yes",
   "no": "No"

@@ -56,14 +56,21 @@ export default class Container extends React.Component {
     mutator: PropTypes.object,
     onSelectRow: PropTypes.func.isRequired,
     resources: PropTypes.object,
-    showPackages: PropTypes.bool,
+    showPackages(props, propName) {
+      if (!props.showTitles && !props[propName]) {
+        return new Error(`Both showTitles and ${propName} props cannot be false`);
+      }
+      return null;
+    },
+    showTitles: PropTypes.bool,
     stripes: PropTypes.shape({
       logger: PropTypes.object,
     }),
   }
 
   static defaultProps = {
-    showPackages: false
+    showPackages: true,
+    showTitles: true
   }
 
   constructor(props) {
@@ -102,7 +109,12 @@ export default class Container extends React.Component {
   }
 
   render() {
-    const { onSelectRow, resources, showPackages } = this.props;
+    const {
+      onSelectRow,
+      resources,
+      showPackages,
+      showTitles
+    } = this.props;
 
     if (this.source) {
       this.source.update(this.props, 'eresources');
@@ -120,6 +132,7 @@ export default class Container extends React.Component {
         queryGetter={this.queryGetter}
         querySetter={this.querySetter}
         showPackages={showPackages}
+        showTitles={showTitles}
         source={this.source}
         syncToLocationSearch={false}
       />

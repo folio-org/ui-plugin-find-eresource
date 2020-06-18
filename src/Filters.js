@@ -15,6 +15,7 @@ export default class EResourceFilters extends React.Component {
     data: PropTypes.object.isRequired,
     filterHandlers: PropTypes.object,
     showPackages: PropTypes.bool,
+    showTitles: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -22,7 +23,8 @@ export default class EResourceFilters extends React.Component {
       class: [],
       type: [],
     },
-    showPackages: false
+    showPackages: true,
+    showTitles: true
   };
 
   state = {
@@ -133,12 +135,12 @@ export default class EResourceFilters extends React.Component {
   }
 
   render() {
-    const { showPackages } = this.props;
+    const { showPackages, showTitles } = this.props;
     return (
       <AccordionSet>
-        {!showPackages && this.renderCheckboxFilter('type')}
-        {!showPackages && this.renderIsPackageFilter()}
-        {this.renderRemoteKbFilter()}
+        {showTitles && this.renderCheckboxFilter('type')}
+        {showTitles && showPackages && this.renderIsPackageFilter()}
+        {showPackages && this.renderRemoteKbFilter()}
       </AccordionSet>
     );
   }

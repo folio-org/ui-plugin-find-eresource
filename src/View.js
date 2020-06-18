@@ -15,9 +15,10 @@ import {
 import { AppIcon } from '@folio/stripes/core';
 
 import {
+  CollapseFilterPaneButton,
+  ExpandFilterPaneButton,
   SearchAndSortNoResultsMessage,
   SearchAndSortQuery,
-  SearchAndSortSearchButton as FilterPaneToggle,
 } from '@folio/stripes/smart-components';
 
 import {
@@ -30,7 +31,6 @@ import Filters from './Filters';
 import css from './View.css';
 
 const propTypes = {
-  children: PropTypes.object,
   data: PropTypes.shape({
     eresources: PropTypes.array.isRequired,
   }),
@@ -40,15 +40,14 @@ const propTypes = {
   querySetter: PropTypes.func.isRequired,
   selectedRecordId: PropTypes.string,
   showPackages: PropTypes.bool,
+  showTitles: PropTypes.bool,
   source: PropTypes.shape({
     loaded: PropTypes.func,
     totalCount: PropTypes.func,
   }),
-  visibleColumns: PropTypes.arrayOf(PropTypes.string),
 };
 
 const EResources = ({
-  children,
   data = {},
   onNeedMoreData,
   onSelectRow,
@@ -57,7 +56,7 @@ const EResources = ({
   selectedRecordId,
   source,
   showPackages,
-  visibleColumns
+  showTitles,
 }) => {
   const count = source?.totalCount() ?? 0;
   const query = queryGetter() ?? {};
@@ -67,7 +66,10 @@ const EResources = ({
 
   const [filterPaneIsVisible, setFilterPaneIsVisible] = useState(true);
   const toggleFilterPane = () => setFilterPaneIsVisible(!filterPaneIsVisible);
-  const initialFilterState = showPackages ? { class: ['package'] } : {};
+  let initialFilterState = {};
+
+  if (!showPackages) initialFilterState = { class: ['nopackage'] };
+  else if (!showTitles) initialFilterState = { class: ['package'] };
 
   return (
     <div data-test-eresources>
@@ -92,6 +94,7 @@ const EResources = ({
             resetAll,
           }) => {
             const disableReset = () => (!filterChanged && !searchChanged);
+            const filterCount = activeFilters.string ? activeFilters.string.split(',').length : 0;
 
             return (
               <Paneset id="eresources-paneset">
@@ -99,6 +102,11 @@ const EResources = ({
                   <Pane
                     defaultWidth="20%"
                     id="pane-eresources-search"
+                    lastMenu={
+                      <PaneMenu>
+                        <CollapseFilterPaneButton onClick={toggleFilterPane} />
+                      </PaneMenu>
+                    }
                     paneTitle={<FormattedMessage id="stripes-smart-components.searchAndFilter" />}
                   >
                     <form onSubmit={onSubmitSearch}>
@@ -148,6 +156,7 @@ const EResources = ({
                         data={data}
                         filterHandlers={getFilterHandlers()}
                         showPackages={showPackages}
+                        showTitles={showTitles}
                       />
                     </form>
                   </Pane>
@@ -155,30 +164,19 @@ const EResources = ({
                 <Pane
                   appIcon={<AppIcon app="agreements" />}
                   defaultWidth="fill"
-                  firstMenu={(filters) => {
-                    const filterCount = filters.string !== '' ? filters.string.split(',').length : 0;
-                    const hideOrShowMessageId = filterPaneIsVisible ?
-                      'stripes-smart-components.hideSearchPane' : 'stripes-smart-components.showSearchPane';
-
-                    return (
-                      <PaneMenu>
-                        <FormattedMessage id="stripes-smart-components.numberOfFilters" values={{ count: filterCount }}>
-                          {appliedFiltersMessage => (
-                            <FormattedMessage id={hideOrShowMessageId}>
-                              {hideOrShowMessage => (
-                                <FilterPaneToggle
-                                  aria-label={`${hideOrShowMessage}...s${appliedFiltersMessage}`}
-                                  badge={!filterPaneIsVisible && filterCount ? filterCount : undefined}
-                                  onClick={toggleFilterPane}
-                                  visible={filterPaneIsVisible}
-                                />
-                              )}
-                            </FormattedMessage>
-                          )}
-                        </FormattedMessage>
-                      </PaneMenu>
-                    );
-                  }}
+                  firstMenu={
+                    !filterPaneIsVisible ?
+                      (
+                        <PaneMenu>
+                          <ExpandFilterPaneButton
+                            filterCount={filterCount}
+                            onClick={toggleFilterPane}
+                          />
+                        </PaneMenu>
+                      )
+                      :
+                      null
+                  }
                   id="pane-eresources-list"
                   padContent={false}
                   paneSub={() => {
@@ -216,7 +214,7 @@ const EResources = ({
                     }}
                     id="list-eresources"
                     isEmptyMessage={
-                      source ? (
+                      source || (!showPackages && !showTitles) ? (
                         <div data-test-eresources-no-results-message>
                           <SearchAndSortNoResultsMessage
                             filterPaneIsVisible
@@ -237,10 +235,9 @@ const EResources = ({
                     sortOrder={sortOrder.replace(/^-/, '').replace(/,.*/, '')}
                     totalCount={count}
                     virtualize
-                    visibleColumns={visibleColumns}
+                    visibleColumns={['name', 'type', 'isbn', 'eissn', 'pissn']}
                   />
                 </Pane>
-                {children}
               </Paneset>
             );
           }
@@ -251,7 +248,5 @@ const EResources = ({
 };
 
 EResources.propTypes = propTypes;
-EResources.defaultProps = {
-  visibleColumns: ['name', 'type', 'isbn', 'eissn', 'pissn']
-};
+
 export default EResources;

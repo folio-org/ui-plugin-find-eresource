@@ -49,7 +49,13 @@
       {
         "permissionName": "ui-plugin-find-eresource.search",
         "displayName": "Find Eresource Plugin: Search eresources",
-        "visible": true
+        "visible": true,
+        "subPermissions": [
+          "erm.packages.view",
+          "erm.titles.view",
+          "erm.resources.view",
+          "erm.pci.view"
+        ]
       }
     ]
   }
