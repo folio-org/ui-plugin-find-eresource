@@ -23,10 +23,12 @@
     "babel-eslint": "^9.0.0",
     "chai": "^4.2.0",
     "chai-spies": "^1.0.0",
+    "core-js": "^3.6.1",
     "eslint": "^6.2.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-intl": "^4.5.1"
+    "react-intl": "^4.5.1",
+    "regenerator-runtime": "^0.13.3"
   },
   "dependencies": {
     "@folio/stripes-erm-components": "^3.0.0",
