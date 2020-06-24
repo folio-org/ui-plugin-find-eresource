@@ -1,0 +1,71 @@
+{
+  "name": "@folio/plugin-find-eresource",
+  "version": "1.0.0",
+  "description": "ERM-eresource-finder for Stripes",
+  "publishConfig": {
+    "registry": "https://repository.folio.org/repository/npm-folio/"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "test": "stripes test karma",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@bigtest/interactor": "^0.9.1",
+    "@bigtest/mirage": "^0.0.1",
+    "@bigtest/mocha": "^0.5.2",
+    "@bigtest/react": "^0.1.2",
+    "@folio/eslint-config-stripes": "^5.2.0",
+    "@folio/stripes": "^4.0.0",
+    "babel-eslint": "^9.0.0",
+    "chai": "^4.2.0",
+    "chai-spies": "^1.0.0",
+    "core-js": "^3.6.1",
+    "eslint": "^6.2.1",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-intl": "^4.5.1",
+    "react-router-dom": "^4.1.1",
+    "regenerator-runtime": "^0.13.3"
+  },
+  "dependencies": {
+    "@folio/stripes-erm-components": "^3.1.0",
+    "dom-helpers": "^3.4.0",
+    "lodash": "^4.17.11",
+    "prop-types": "^15.6.0"
+  },
+  "peerDependencies": {
+    "@folio/stripes": "^4.0.0",
+    "react": "*",
+    "react-intl": "^4.5.1"
+  },
+  "stripes": {
+    "actsAs": [
+      "plugin"
+    ],
+    "pluginType": "find-eresource",
+    "displayName": "ui-plugin-find-eresource.meta.title",
+    "okapiInterfaces": {
+      "erm": "1.0 2.0"
+    },
+    "stripesDeps": [
+      "@folio/stripes-erm-components"
+    ],
+    "permissionSets": [
+      {
+        "permissionName": "ui-plugin-find-eresource.search",
+        "displayName": "Find Eresource Plugin: Search eresources",
+        "visible": true,
+        "subPermissions": [
+          "erm.packages.view",
+          "erm.titles.view",
+          "erm.resources.view",
+          "erm.pci.view"
+        ]
+      }
+    ]
+  }
+}
