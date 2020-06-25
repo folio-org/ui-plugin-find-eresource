@@ -10,7 +10,7 @@ Version 2.0. See the file "[LICENSE](LICENSE)" for more information.
 This package furnishes a single Stripes plugin of type `find-eresource`,
 which can be included in Stripes modules by means of a `<Pluggable
 type="find-eresource">` element. See [the *Plugins*
-section](https://github.com/folio-org/stripes-core/blob/master/doc/dev-guide.md#plugins)
+section](https://github.com/folio-org/stripes/blob/master/doc/dev-guide.md#plugins)
 of the Module Developer's Guide.
 
 ## Props
