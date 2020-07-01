@@ -1,5 +1,5 @@
 {
-    "meta.title": "E-resource Finder Plugin",
+    "meta.title": "Плагин поиска электронных ресурсов",
     "permission.search": "Найти плагин электронных ресурсов: Поиск электронных ресурсов",
     "selectEresource": "Выбрать электронный ресурс",
     "eresources": "Электронные ресурсы",
@@ -8,7 +8,7 @@
     "title": "Заголовок",
     "prop.eissn": "ISSN (онлайн)",
     "prop.isbn": "ISBN",
-    "prop.isPackage": "Is package",
+    "prop.isPackage": "Является пакетом",
     "prop.name": "Название",
     "prop.sourceKb": "Внешний источник данных",
     "prop.type": "Тип",
