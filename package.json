@@ -15,7 +15,6 @@
   },
   "devDependencies": {
     "@bigtest/interactor": "^0.9.1",
-    "@bigtest/mirage": "^0.0.1",
     "@bigtest/mocha": "^0.5.2",
     "@bigtest/react": "^0.1.2",
     "@folio/eslint-config-stripes": "^5.2.0",
@@ -25,6 +24,9 @@
     "chai-spies": "^1.0.0",
     "core-js": "^3.6.1",
     "eslint": "^6.2.1",
+    "faker": "^4.1.0",
+    "inflected": "^2.0.4",
+    "miragejs": "^0.1.40",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-intl": "^4.5.1",

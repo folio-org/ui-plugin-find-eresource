@@ -1,7 +1,7 @@
 import React from 'react';
 import { describe, beforeEach, it } from '@bigtest/mocha';
 import chai from 'chai';
-import { faker } from '@bigtest/mirage';
+import faker from 'faker';
 import spies from 'chai-spies';
 
 import setupApplication, { mount } from '../helpers/helpers';
