@@ -96,12 +96,8 @@ export default class Container extends React.Component {
     }
   }
 
-  querySetter = ({ nsValues, state }) => {
-    if (/reset/.test(state.changeType)) {
-      this.props.mutator.eresourceSearchParams.replace(nsValues);
-    } else {
-      this.props.mutator.eresourceSearchParams.update(nsValues);
-    }
+  querySetter = ({ nsValues }) => {
+    this.props.mutator.eresourceSearchParams.update(nsValues);
   }
 
   queryGetter = () => {
