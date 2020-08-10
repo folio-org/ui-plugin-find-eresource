@@ -67,11 +67,12 @@ const EResources = ({
   const [filterPaneIsVisible, setFilterPaneIsVisible] = useState(true);
   const toggleFilterPane = () => setFilterPaneIsVisible(!filterPaneIsVisible);
   let initialFilterState = {};
-  let sortableColumns = ['name'];
+  let sortableColumns = ['name', 'type'];
 
   if (!showPackages) initialFilterState = { class: ['nopackage'] };
   else if (!showTitles) initialFilterState = { class: ['package'] };
-  else sortableColumns = ['name', 'type'];
+
+  if (showPackages && !showTitles) sortableColumns = ['name'];
 
   return (
     <div data-test-eresources>
