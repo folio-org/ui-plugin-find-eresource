@@ -52,7 +52,7 @@
     "pluginType": "find-eresource",
     "displayName": "ui-plugin-find-eresource.meta.title",
     "okapiInterfaces": {
-      "erm": "1.0 2.0"
+      "erm": "1.0 2.0 3.0"
     },
     "stripesDeps": [
       "@folio/stripes-erm-components"
