@@ -32,7 +32,7 @@ import css from './View.css';
 
 const propTypes = {
   data: PropTypes.shape({
-    eresources: PropTypes.array.isRequired,
+    eresources: PropTypes.arrayOf(PropTypes.object).isRequired,
   }),
   onNeedMoreData: PropTypes.func.isRequired,
   onSelectRow: PropTypes.func.isRequired,
