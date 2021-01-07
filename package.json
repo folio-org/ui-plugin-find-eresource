@@ -1,6 +1,6 @@
 {
   "name": "@folio/plugin-find-eresource",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "ERM-eresource-finder for Stripes",
   "publishConfig": {
     "registry": "https://repository.folio.org/repository/npm-folio/"
@@ -18,7 +18,7 @@
     "@bigtest/mocha": "^0.5.2",
     "@bigtest/react": "^0.1.2",
     "@folio/eslint-config-stripes": "^5.2.0",
-    "@folio/stripes": "^5.0.0",
+    "@folio/stripes": "^6.0.0",
     "babel-eslint": "^9.0.0",
     "chai": "^4.2.0",
     "chai-spies": "^1.0.0",
@@ -40,7 +40,7 @@
     "prop-types": "^15.6.0"
   },
   "peerDependencies": {
-    "@folio/stripes": "^5.0.0",
+    "@folio/stripes": "^6.0.0",
     "react": "*",
     "react-intl": "^5.8.1",
     "react-router-dom": "^5.2.0"
