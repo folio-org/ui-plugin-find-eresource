@@ -2,6 +2,8 @@
 
 ## 2.0.0 IN PROGRESS
 * Upgrade to Stripes 6.0
+* Upgrade to React 17. ERM-1526.
+
 ## 1.0.0 2020-10-15
 * New plugin module created.
 * Refactor from `bigtest/mirage` to `miragejs`
