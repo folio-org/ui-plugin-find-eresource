@@ -1,6 +1,6 @@
 # Change history for ui-plugin-find-eresource
 
-## 2.0.0 IN PROGRESS
+## 2.0.0 2021-03-18
 * Upgrade to Stripes 6.0
 * Bumped okapiInterface dep to erm 4.0
 * Added devDep to stripes-cli
