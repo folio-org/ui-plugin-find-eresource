@@ -1,6 +1,6 @@
 {
-    "meta.title": "E-resource Finder Plugin",
-    "permission.search": "Find E-resource Plugin: Search e-resources",
+    "meta.title": "Plugin de recherche de ressources électroniques",
+    "permission.search": "Plugin de recherche de ressources électroniques: Rechercher des ressources électroniques",
     "selectEresource": "Sélectionnez une ressource électronique",
     "eresources": "Ressources électroniques",
     "package": "Bouquet",
