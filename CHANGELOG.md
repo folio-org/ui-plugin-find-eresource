@@ -1,6 +1,7 @@
 # Change history for ui-plugin-find-eresource
 
-## 2.1.0 In progress
+## 2.1.0 2021-06-16
+* ERM-1598 Add descriptions to visible permission set in ui-plugin-find-eresource
 
 ## 2.0.0 2021-03-18
 * Upgrade to Stripes 6.0
