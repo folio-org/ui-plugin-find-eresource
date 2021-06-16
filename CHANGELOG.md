@@ -1,5 +1,7 @@
 # Change history for ui-plugin-find-eresource
 
+## 2.2.0 (In Progress)
+
 ## 2.1.0 2021-06-16
 * ERM-1598 Add descriptions to visible permission set in ui-plugin-find-eresource
 
