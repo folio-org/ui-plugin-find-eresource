@@ -18,8 +18,8 @@
     "@bigtest/mocha": "^0.5.2",
     "@bigtest/react": "^0.1.2",
     "@folio/eslint-config-stripes": "^5.2.0",
-    "@folio/stripes": "^6.0.0",
-    "@folio/stripes-cli": "^2.0.0",
+    "@folio/stripes": "^6.2.0",
+    "@folio/stripes-cli": "^2.3.0",
     "babel-eslint": "^9.0.0",
     "chai": "^4.2.0",
     "chai-spies": "^1.0.0",
@@ -35,13 +35,13 @@
     "regenerator-runtime": "^0.13.3"
   },
   "dependencies": {
-    "@folio/stripes-erm-components": "^5.0.0",
+    "@folio/stripes-erm-components": "^5.1.0",
     "dom-helpers": "^3.4.0",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.0"
   },
   "peerDependencies": {
-    "@folio/stripes": "^6.0.0",
+    "@folio/stripes": "^6.2.0",
     "react": "*",
     "react-intl": "^5.8.1",
     "react-router-dom": "^5.2.0"
