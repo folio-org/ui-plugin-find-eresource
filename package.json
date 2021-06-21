@@ -1,6 +1,6 @@
 {
   "name": "@folio/plugin-find-eresource",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "ERM-eresource-finder for Stripes",
   "publishConfig": {
     "registry": "https://repository.folio.org/repository/npm-folio/"
@@ -53,7 +53,7 @@
     "pluginType": "find-eresource",
     "displayName": "ui-plugin-find-eresource.meta.title",
     "okapiInterfaces": {
-      "erm": "1.0 2.0 3.0 4.0"
+      "erm": "1.0 2.0 3.0 4.0 5.0"
     },
     "stripesDeps": [
       "@folio/stripes-erm-components"
