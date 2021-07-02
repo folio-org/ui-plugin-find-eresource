@@ -5,7 +5,7 @@ import EresourceSearchModal from './src/Modal';
 
 function PluginFindEresource(props) {
   return (props.justDisplayModal ?
-    <EresourceSearchModal {...props} /> :
+    <EresourceSearchModal open {...props} /> :
     <EresourceSearch {...props} />);
 }
 
