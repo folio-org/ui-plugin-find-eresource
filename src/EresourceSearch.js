@@ -8,7 +8,9 @@ const triggerId = 'find-eresource-trigger';
 
 export default class EresourceSearch extends React.Component {
   static propTypes = {
+    defaultOpen: PropTypes.bool,
     renderTrigger: PropTypes.func,
+    onClose: PropTypes.func
   };
 
   constructor(props) {
@@ -17,7 +19,7 @@ export default class EresourceSearch extends React.Component {
     this.modalRef = React.createRef();
     this.modalTrigger = React.createRef();
     this.state = {
-      open: false,
+      open: props.defaultOpen || false,
     };
   }
 
@@ -26,12 +28,14 @@ export default class EresourceSearch extends React.Component {
   }
 
   closeModal = () => {
+    const { onClose } = this.props;
     this.setState({ open: false }, () => {
       if (this.modalRef.current && this.modalTrigger.current) {
         if (contains(this.modalRef.current, document.activeElement)) {
           this.modalTrigger.current.focus();
         }
       }
+      onClose && onClose(); // eslint-disable-line no-unused-expressions
     });
   }
 
@@ -68,7 +72,7 @@ export default class EresourceSearch extends React.Component {
         {this.renderTriggerButton()}
         <Modal
           modalRef={this.modalRef}
-          onClose={this.closeModal}
+          onCloseModal={this.closeModal}
           open={this.state.open}
           {...this.props}
         />
