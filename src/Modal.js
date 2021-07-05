@@ -11,7 +11,7 @@ export default class EresourceSearchModal extends React.Component {
     dataKey: PropTypes.string,
     modalRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
     onEresourceSelected: PropTypes.func.isRequired,
-    onClose: PropTypes.func.isRequired,
+    onCloseModal: PropTypes.func.isRequired,
     open: PropTypes.bool,
     stripes: PropTypes.shape({
       connect: PropTypes.func.isRequired,
@@ -31,7 +31,7 @@ export default class EresourceSearchModal extends React.Component {
 
   selectEresource = (_, eresource) => {
     this.props.onEresourceSelected(eresource);
-    this.props.onClose();
+    this.props.onCloseModal();
   }
 
   render() {
@@ -45,7 +45,7 @@ export default class EresourceSearchModal extends React.Component {
             enforceFocus={false}
             id="plugin-find-eresource-modal"
             label={label}
-            onClose={this.props.onClose}
+            onClose={this.props.onCloseModal}
             open={this.props.open}
             size="large"
           >
