@@ -16,6 +16,10 @@ export default class EresourceSearchModal extends React.Component {
     stripes: PropTypes.shape({
       connect: PropTypes.func.isRequired,
     }),
+    modalLabel: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
+    ]),
   };
 
   static defaultProps = {
@@ -44,7 +48,7 @@ export default class EresourceSearchModal extends React.Component {
             dismissible
             enforceFocus={false}
             id="plugin-find-eresource-modal"
-            label={label}
+            label={this.props.modalLabel || label}
             onClose={this.props.onCloseModal}
             open={this.props.open}
             size="large"
