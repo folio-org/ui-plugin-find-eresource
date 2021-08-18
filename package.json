@@ -11,7 +11,8 @@
   },
   "scripts": {
     "test": "stripes test karma",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-plugin-find-eresource ./translations/ui-plugin-find-eresource/compiled"
   },
   "devDependencies": {
     "@bigtest/interactor": "^0.9.1",
