@@ -115,32 +115,6 @@ describe('UI-plugin-find-eresource', function () {
       });
     });
 
-    describe('rendering plugin with only titles', function () {
-      beforeEach(async function () {
-        await mount(
-          <PluginHarness showPackages={false} />
-        );
-        await findEresource.button.click();
-      });
-
-      it('should not render the external data source filter', function () {
-        expect(findEresource.modal.isRemoteKbFilterPresent).to.be.false;
-      });
-    });
-
-    describe('rendering plugin with only titles', function () {
-      beforeEach(async function () {
-        await mount(
-          <PluginHarness showPackages={false} />
-        );
-        await findEresource.button.click();
-      });
-
-      it('displays expected number of titles', function () {
-        expect(findEresource.modal.instances().length).to.equal(booksCount + journalsCount);
-      });
-    });
-
     describe('plugin opened with both packages and titles enabled', function () {
       beforeEach(async function () {
         await mount(
@@ -184,10 +158,6 @@ describe('UI-plugin-find-eresource', function () {
         beforeEach(async function () {
           await findEresource.button.click();
           await findEresource.modal.instances(1).click();
-        });
-
-        it('calls the onEresourceSelected callback', function () {
-          expect(onEresourceSelected).to.have.been.called();
         });
 
         it('hides the modal', function () {
