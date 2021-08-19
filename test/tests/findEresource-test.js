@@ -49,7 +49,102 @@ describe('UI-plugin-find-eresource', function () {
     await this.server.createList('eresource', booksCount, book);
   });
 
+<<<<<<< Updated upstream
   describe('plugin', function () {
+=======
+  describe('rendering plugin with only packages', function () {
+    beforeEach(async function () {
+      await mount(
+        <PluginHarness showTitles={false} />
+      );
+      await findEresource.button.click();
+    });
+
+    it('should not render the type filter', function () {
+      expect(findEresource.modal.isTypeFilterPresent).to.be.false;
+    });
+  });
+
+  describe('rendering plugin with only packages', function () {
+    beforeEach(async function () {
+      await mount(
+        <PluginHarness showTitles={false} />
+      );
+      await findEresource.button.click();
+    });
+
+    it('should not render the package filter', function () {
+      expect(findEresource.modal.isPackageFilterPresent).to.be.false;
+    });
+  });
+
+  describe('rendering plugin with only packages', function () {
+    beforeEach(async function () {
+      await mount(
+        <PluginHarness showTitles={false} />
+      );
+      await findEresource.button.click();
+    });
+
+    it('opens a modal', function () {
+      expect(findEresource.modal.isPresent).to.be.true;
+    });
+
+    it('should render the external data source filter', function () {
+      expect(findEresource.modal.isRemoteKbFilterPresent).to.be.true;
+    });
+  });
+
+  describe('rendering plugin with only titles', function () {
+    beforeEach(async function () {
+      await mount(
+        <PluginHarness showPackages={false} />
+      );
+      await findEresource.button.click();
+    });
+
+    it('should not render the isPackage filter', function () {
+      expect(findEresource.modal.isPackageFilterPresent).to.be.false;
+    });
+  });
+
+  describe('rendering plugin with only titles', function () {
+    beforeEach(async function () {
+      await mount(
+        <PluginHarness showPackages={false} />
+      );
+      await findEresource.button.click();
+    });
+
+    it('should render the type filter', function () {
+      expect(findEresource.modal.isTypeFilterPresent).to.be.true;
+    });
+  });
+
+  describe('rendering plugin with only titles', function () {
+    beforeEach(async function () {
+      await mount(
+        <PluginHarness showPackages={false} />
+      );
+      await findEresource.button.click();
+    });
+
+
+    it('opens a modal', function () {
+      expect(findEresource.modal.isPresent).to.be.true;
+    });
+
+    it('displays expected number of titles', function () {
+      expect(findEresource.modal.instances().length).to.equal(booksCount + journalsCount);
+    });
+
+    it('should not render the external data source filter', function () {
+      expect(findEresource.modal.isRemoteKbFilterPresent).to.be.false;
+    });
+  });
+
+  describe('plugin opened with both packages and titles enabled', function () {
+>>>>>>> Stashed changes
     beforeEach(async function () {
       await mount(
         <PluginHarness
