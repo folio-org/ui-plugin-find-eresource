@@ -84,10 +84,6 @@ describe('UI-plugin-find-eresource', function () {
         await findEresource.button.click();
       });
 
-      it('opens a modal', function () {
-        expect(findEresource.modal.isPresent).to.be.true;
-      });
-
       it('should render the external data source filter', function () {
         expect(findEresource.modal.isRemoteKbFilterPresent).to.be.true;
       });
@@ -140,10 +136,6 @@ describe('UI-plugin-find-eresource', function () {
         await findEresource.button.click();
       });
 
-      it('opens a modal', function () {
-        expect(findEresource.modal.isPresent).to.be.true;
-      });
-
       it('displays expected number of titles', function () {
         expect(findEresource.modal.instances().length).to.equal(booksCount + journalsCount);
       });
@@ -194,12 +186,12 @@ describe('UI-plugin-find-eresource', function () {
           await findEresource.modal.instances(1).click();
         });
 
-        it('hides the modal', function () {
-          expect(findEresource.modal.isPresent).to.be.false;
-        });
-
         it('calls the onEresourceSelected callback', function () {
           expect(onEresourceSelected).to.have.been.called();
+        });
+
+        it('hides the modal', function () {
+          expect(findEresource.modal.isPresent).to.be.false;
         });
       });
 
