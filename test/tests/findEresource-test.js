@@ -127,6 +127,18 @@ describe('UI-plugin-find-eresource', function () {
         await findEresource.button.click();
       });
 
+      it('should not render the external data source filter', function () {
+        expect(findEresource.modal.isRemoteKbFilterPresent).to.be.false;
+      });
+    });
+
+    describe('rendering plugin with only titles', function () {
+      beforeEach(async function () {
+        await mount(
+          <PluginHarness showPackages={false} />
+        );
+        await findEresource.button.click();
+      });
 
       it('opens a modal', function () {
         expect(findEresource.modal.isPresent).to.be.true;
@@ -134,10 +146,6 @@ describe('UI-plugin-find-eresource', function () {
 
       it('displays expected number of titles', function () {
         expect(findEresource.modal.instances().length).to.equal(booksCount + journalsCount);
-      });
-
-      it('should not render the external data source filter', function () {
-        expect(findEresource.modal.isRemoteKbFilterPresent).to.be.false;
       });
     });
 
