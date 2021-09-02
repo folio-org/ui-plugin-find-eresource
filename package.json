@@ -1,6 +1,6 @@
 {
   "name": "@folio/plugin-find-eresource",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "ERM-eresource-finder for Stripes",
   "publishConfig": {
     "registry": "https://repository.folio.org/repository/npm-folio/"
