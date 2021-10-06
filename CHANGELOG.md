@@ -1,6 +1,8 @@
 # Change history for ui-plugin-find-eresource
 
-## 3.0.0 (In Progress)
+## 4.0.0 2021-10-06
+* Upgrade to stripes v7.
+* Extend API to handle defaultOpen and onClose props.
 * Included interface dependency for erm 5.0
 * Add optional `modalLabel` prop to override default label.
 
