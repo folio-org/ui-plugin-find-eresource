@@ -11,8 +11,8 @@
     "prop.isPackage": "Paquete",
     "prop.name": "Nombre",
     "prop.sourceKb": "External data source",
-    "prop.type": "Type",
-    "prop.pissn": "ISSN (Print)",
-    "yes": "Yes",
+    "prop.type": "Tipo",
+    "prop.pissn": "ISSN (Impreso)",
+    "yes": "Sí",
     "no": "No"
 }
