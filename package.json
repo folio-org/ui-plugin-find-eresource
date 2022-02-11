@@ -10,7 +10,8 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "test": "stripes test karma",
+    "test": "yarn run test:bigtest",
+    "test:bigtest": "stripes test karma --bundle --karma.singleRun --karma.browsers ChromeDocker --karma.reporters mocha junit --coverage",
     "test:jest": "jest --ci --coverage",
     "lint": "eslint .",
     "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-plugin-find-eresource ./translations/ui-plugin-find-eresource/compiled"
