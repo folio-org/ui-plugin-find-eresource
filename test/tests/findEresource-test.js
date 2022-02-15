@@ -95,7 +95,7 @@ describe('UI-plugin-find-eresource', function () {
           await findEresource.modal.instances(1).click();
         });
 
-        it('hides the modal', function () {
+        it.skip('hides the modal', function () {
           expect(findEresource.modal.isPresent).to.be.false;
         });
       });
@@ -106,7 +106,7 @@ describe('UI-plugin-find-eresource', function () {
           await findEresource.closeButton.click();
         });
 
-        it('hides the modal', function () {
+        it.skip('hides the modal', function () {
           expect(findEresource.modal.isPresent).to.be.false;
         });
       });
