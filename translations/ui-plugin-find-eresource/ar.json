@@ -6,13 +6,13 @@
     "package": "حزمة",
     "searchInputLabel": "بحث الموارد الإلكترونية",
     "title": "عنوان",
-    "prop.eissn": "ردمد (عبر الإنترنت)",
+    "prop.eissn": "ردمد (أونلاين)",
     "prop.isbn": "ردمك",
     "prop.isPackage": "حزمة",
     "prop.name": "الاسم",
     "prop.sourceKb": "مصدر بيانات خارجي",
     "prop.type": "النوع",
-    "prop.pissn": "ردمد (طباعة)",
+    "prop.pissn": "ردمد (ورقي)",
     "yes": "نعم",
     "no": "لا"
 }

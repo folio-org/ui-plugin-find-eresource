@@ -1,5 +1,8 @@
 # Change history for ui-plugin-find-eresource
-
+## 4.2.0 In progress
+## 4.1.1 2022-03-03
+* ERM-1996 Prepare Plugin Find Agreement for RTL development
+* Updated stripes dependencies
 ## 4.0.0 2021-10-06
 * Upgrade to stripes v7.
 * Extend API to handle defaultOpen and onClose props.
