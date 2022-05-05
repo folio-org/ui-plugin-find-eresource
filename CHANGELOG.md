@@ -1,5 +1,6 @@
 # Change history for ui-plugin-find-eresource
 ## 4.2.0 In progress
+* ERM-2102 Replace babel-eslint with @babel/eslint-parser 
 ## 4.1.1 2022-03-03
 * ERM-1996 Prepare Plugin Find Agreement for RTL development
 * Updated stripes dependencies
