@@ -29,6 +29,7 @@ export default class Container extends React.Component {
         }],
         filterKeys: {
           remoteKb: 'remoteKb.id',
+          type: 'type.value'
         },
         queryGetter: r => r.eresourceSearchParams,
       }),
