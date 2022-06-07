@@ -1,4 +1,7 @@
 # Change history for ui-plugin-find-eresource
+
+## 4.1.3 2022-06-07
+* tweak test run parameters
 ## 4.1.2 2022-06-07
 * ERM-2188. Backport recent zh_TW translations
 ## 4.1.1 2022-03-03
