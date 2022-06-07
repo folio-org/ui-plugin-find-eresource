@@ -1,4 +1,6 @@
 # Change history for ui-plugin-find-eresource
+## 4.1.2 2022-06-07
+* ERM-2188. Backport recent zh_TW translations
 ## 4.1.1 2022-03-03
 * ERM-1996 Prepare Plugin Find Agreement for RTL development
 * Updated stripes dependencies
