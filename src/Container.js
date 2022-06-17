@@ -57,11 +57,11 @@ const Container = ({
     const filterArray = [];
 
     if (!showTitles) {
-      filterArray.push({ path: 'class', comparator: '!=', value: 'org.olf.kb.TitleInstance' });
+      filterArray.push({ path: 'class', value: 'org.olf.kb.Pkg' });
     }
 
     if (!showPackages) {
-      filterArray.push({ path: 'class', comparator: '!=', value: 'org.olf.kb.Pkg' });
+      filterArray.push({ path: 'class', value: 'org.olf.kb.TitleInstance' });
     }
 
     return (filterArray);
