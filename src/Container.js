@@ -1,11 +1,11 @@
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { useQuery } from 'react-query';
 
 import { useOkapiKy } from '@folio/stripes/core';
 import { getRefdataValuesByDesc, useInfiniteFetch } from '@folio/stripes-erm-components';
-import { generateKiwtQueryParams, useKiwtSASQuery, useRefdata } from '@k-int/stripes-kint-components';
+import { generateKiwtQueryParams, useRefdata } from '@k-int/stripes-kint-components';
 
 import View from './View';
 
@@ -51,21 +51,12 @@ const Container = ({
     endpoint: 'erm/refdata'
   });
 
-  const { query, querySetter, queryGetter } = useKiwtSASQuery();
-
-  const filters = useMemo(() => {
-    const filterArray = [];
-
-    if (!showTitles) {
-      filterArray.push({ path: 'class', value: 'org.olf.kb.Pkg' });
-    }
-
-    if (!showPackages) {
-      filterArray.push({ path: 'class', value: 'org.olf.kb.TitleInstance' });
-    }
-
-    return (filterArray);
-  }, [showTitles, showPackages]);
+  // We only need local session query here, use state
+  const [query, setQuery] = useState({});
+  const querySetter = ({ nsValues }) => {
+    setQuery(nsValues);
+  };
+  const queryGetter = () => query;
 
   const eresourcesQueryParams = useMemo(() => (
     generateKiwtQueryParams({
@@ -86,10 +77,9 @@ const Container = ({
         publicationType: 'publicationType.value',
         type: 'type.value'
       },
-      filters,
-      perPage: RESULT_COUNT_INCREMENT
+      perPage: RESULT_COUNT_INCREMENT,
     }, (query ?? {}))
-  ), [filters, query]);
+  ), [query]);
 
   const {
     infiniteQueryObject: {
