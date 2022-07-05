@@ -1,4 +1,6 @@
 # Change history for ui-plugin-find-eresource
+## 4.3.0 In progress
+
 ## 4.2.0 2022-07-05
 * ERM-2135 ui-plugin-find-eresource should use values not labels when apply filters
 * ERM-2102 Replace babel-eslint with @babel/eslint-parser
