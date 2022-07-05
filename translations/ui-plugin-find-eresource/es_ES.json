@@ -10,8 +10,8 @@
     "prop.isbn": "ISBN",
     "prop.isPackage": "Is package",
     "prop.name": "Name",
-    "prop.sourceKb": "External data source",
-    "prop.type": "Type",
+    "prop.sourceKb": "Origen de datos externo",
+    "prop.type": "Tipo",
     "prop.pissn": "ISSN (Print)",
     "yes": "Yes",
     "no": "No"
