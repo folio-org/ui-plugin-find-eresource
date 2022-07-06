@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 
 import { useQuery } from 'react-query';
 
+import { generateKiwtQueryParams, useRefdata } from '@k-int/stripes-kint-components';
+
 import { useOkapiKy } from '@folio/stripes/core';
 import { getRefdataValuesByDesc, useInfiniteFetch } from '@folio/stripes-erm-components';
-import { generateKiwtQueryParams, useRefdata } from '@k-int/stripes-kint-components';
 
 import View from './View';
 
