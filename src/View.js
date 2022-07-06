@@ -45,6 +45,7 @@ const propTypes = {
     loaded: PropTypes.func,
     totalCount: PropTypes.func,
   }),
+  syncToLocationSearch: PropTypes.bool
 };
 
 const EResources = ({
@@ -57,6 +58,7 @@ const EResources = ({
   source,
   showPackages,
   showTitles,
+  syncToLocationSearch
 }) => {
   const count = source?.totalCount() ?? 0;
   const query = queryGetter() ?? {};
@@ -82,7 +84,9 @@ const EResources = ({
         initialSortState={{ sort: 'name' }}
         queryGetter={queryGetter}
         querySetter={querySetter}
+        setQueryOnMount
         sortableColumns={sortableColumns}
+        syncToLocationSearch={syncToLocationSearch}
       >
         {
           ({
@@ -165,7 +169,7 @@ const EResources = ({
                   </Pane>
                 }
                 <Pane
-                  appIcon={<AppIcon app="agreements" />}
+                  appIcon={<AppIcon app="agreements" iconKey="eresource" />}
                   defaultWidth="fill"
                   firstMenu={
                     !filterPaneIsVisible ?
