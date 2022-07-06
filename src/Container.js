@@ -55,7 +55,7 @@ const Container = ({
   // We only need local session query here, use state
   const [query, setQuery] = useState({});
   const querySetter = ({ nsValues }) => {
-    setQuery(nsValues);
+    setQuery({ ...query, ...nsValues });
   };
   const queryGetter = () => query;
 
@@ -92,7 +92,7 @@ const Container = ({
     results: eresources = [],
     total: eresourcesCount = 0
   } = useInfiniteFetch(
-    [ERESOURCES_ELECTRONIC_ENDPOINT, eresourcesQueryParams, 'ui-agreements', 'EresourcesRoute', 'getEresources'],
+    ['ERM', 'EResources', eresourcesQueryParams, ERESOURCES_ELECTRONIC_ENDPOINT],
     ({ pageParam = 0 }) => {
       const params = [...eresourcesQueryParams, `offset=${pageParam}`];
       return ky.get(encodeURI(`${ERESOURCES_ELECTRONIC_ENDPOINT}?${params?.join('&')}`)).json();
@@ -101,7 +101,7 @@ const Container = ({
 
   const kbsPath = 'erm/kbs';
   const { data: kbs = [] } = useQuery(
-    [kbsPath, 'ui-agreements', 'EresourcesRoute', 'getKbs'],
+    ['ERM', 'KnowledgeBases', kbsPath],
     () => ky.get(kbsPath).json()
   );
 

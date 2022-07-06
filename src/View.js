@@ -81,7 +81,6 @@ const EResources = ({
       <SearchAndSortQuery
         initialFilterState={initialFilterState}
         initialSearchState={{ query: '' }}
-        // FIXME WIP the initialSortState does not get set
         initialSortState={{ sort: 'name' }}
         queryGetter={queryGetter}
         querySetter={querySetter}
