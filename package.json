@@ -6,9 +6,6 @@
     "registry": "https://repository.folio.org/repository/npm-folio/"
   },
   "license": "Apache-2.0",
-  "engines": {
-    "node": ">=10.0.0"
-  },
   "scripts": {
     "test": "yarn run test:bigtest",
     "test:bigtest": "stripes test karma --bundle",
