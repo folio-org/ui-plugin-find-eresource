@@ -8,7 +8,7 @@
     "title": "題名",
     "prop.eissn": "國際標準期刊號（電子期刊）ISSN (Online)",
     "prop.isbn": "國際標準書號 ISBN",
-    "prop.isPackage": "是否為資源包",
+    "prop.isPackage": "是否為資源包？",
     "prop.name": "名稱",
     "prop.sourceKb": "外部資料來源",
     "prop.type": "類型",

@@ -8,11 +8,11 @@
     "title": "Title",
     "prop.eissn": "ISSN (Online)",
     "prop.isbn": "ISBN",
-    "prop.isPackage": "Is package",
-    "prop.name": "Name",
-    "prop.sourceKb": "External data source",
-    "prop.type": "Type",
-    "prop.pissn": "ISSN (Print)",
+    "prop.isPackage": "Is balíček",
+    "prop.name": "Jméno",
+    "prop.sourceKb": "Externí zdroj dat",
+    "prop.type": "Typ",
+    "prop.pissn": "ISSN (Tisk)",
     "yes": "Ano",
-    "no": "No"
+    "no": "Ne"
 }
