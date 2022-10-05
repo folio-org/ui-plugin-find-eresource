@@ -1,83 +1,82 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+
+import { useIntlKeyStore } from '@k-int/stripes-kint-components';
+
 import { Button, Icon } from '@folio/stripes/components';
 import contains from 'dom-helpers/query/contains';
 import Modal from './Modal';
 
 const triggerId = 'find-eresource-trigger';
 
-export default class EresourceSearch extends React.Component {
-  static propTypes = {
-    defaultOpen: PropTypes.bool,
-    renderTrigger: PropTypes.func,
-    onClose: PropTypes.func
+const EresourceSearch = (props) => {
+  const {
+    renderTrigger
+  } = props;
+
+  // Piggyback on the translations `ui-agreements` already sets up for now
+  // The likelihood of anyone running ui-plugin-find-agreement and NOT ui-agreements seems very low.
+  const addKey = useIntlKeyStore(state => state.addKey);
+  addKey('ui-agreements');
+
+
+  const modalRef = useRef();
+  const modalTrigger = useRef();
+
+  const [open, setOpen] = useState(false);
+
+  const openModal = () => {
+    setOpen(true);
   };
 
-  constructor(props) {
-    super(props);
+  const closeModal = () => {
+    setOpen(false);
 
-    this.modalRef = React.createRef();
-    this.modalTrigger = React.createRef();
-    this.state = {
-      open: props.defaultOpen || false,
-    };
-  }
+    if (modalRef.current && modalTrigger.current && contains(modalRef.current, document.activeElement)) {
+      modalTrigger.current.focus();
+    }
+  };
 
-  openModal = () => {
-    this.setState({ open: true });
-  }
-
-  closeModal = () => {
-    const { onClose } = this.props;
-    this.setState({ open: false }, () => {
-      if (this.modalRef.current && this.modalTrigger.current) {
-        if (contains(this.modalRef.current, document.activeElement)) {
-          this.modalTrigger.current.focus();
-        }
-      }
-      onClose && onClose(); // eslint-disable-line no-unused-expressions
-    });
-  }
-
-  renderDefaultTrigger() {
+  const renderDefaultTrigger = () => {
     return (
       <Button
-        buttonRef={this.modalTrigger}
+        buttonRef={modalTrigger}
         buttonStyle="primary noRightRadius"
         id={triggerId}
-        onClick={this.openModal}
+        onClick={openModal}
       >
         <Icon color="#fff" icon="search" />
       </Button>
     );
-  }
+  };
 
-  renderTriggerButton() {
-    const {
-      renderTrigger,
-    } = this.props;
-
+  const renderTriggerButton = () => {
     return renderTrigger
       ? renderTrigger({
-        buttonRef: this.modalTrigger,
         id: triggerId,
-        onClick: this.openModal,
+        onClick: openModal,
+        buttonRef: modalTrigger,
       })
-      : this.renderDefaultTrigger();
-  }
+      : renderDefaultTrigger();
+  };
 
-  render() {
-    return (
-      <>
-        {this.renderTriggerButton()}
-        <Modal
-          modalRef={this.modalRef}
-          onCloseModal={this.closeModal}
-          open={this.state.open}
-          {...this.props}
-        />
-      </>
+  return (
+    <>
+      {renderTriggerButton()}
+      <Modal
+        modalRef={modalRef}
+        onClose={closeModal}
+        open={open}
+        {...props}
+      />
+    </>
+  );
+};
 
-    );
-  }
-}
+EresourceSearch.propTypes = {
+  defaultOpen: PropTypes.bool,
+  renderTrigger: PropTypes.func,
+  onClose: PropTypes.func
+};
+
+export default EresourceSearch;
