@@ -85,6 +85,7 @@
     "@k-int/stripes-kint-components": "^3.0.3",
     "dom-helpers": "^3.4.0",
     "lodash": "^4.17.11",
+    "query-string": "^7.1.1",
     "prop-types": "^15.6.0"
   },
   "peerDependencies": {
@@ -92,7 +93,6 @@
     "@folio/stripes-erm-components": "^6.2.0",
     "final-form": "^4.18.4",
     "final-form-arrays": "^3.0.1",
-    "query-string": "^7.1.1",
     "react": "^17.0.2",
     "react-final-form": "^6.3.0",
     "react-final-form-arrays": "^3.1.0",
