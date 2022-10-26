@@ -1,5 +1,7 @@
 # Change history for ui-plugin-find-eresource
 ## 4.3.0 In progress
+* Bump to stripes-erm-components ^7.0.0
+
 
 ## 4.2.0 2022-07-05
 * ERM-2135 ui-plugin-find-eresource should use values not labels when apply filters
