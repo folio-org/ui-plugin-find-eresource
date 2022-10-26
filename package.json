@@ -81,7 +81,6 @@
     "typescript": "^2.8.0"
   },
   "dependencies": {
-    "@folio/stripes-testing": "^4.2.0",
     "@k-int/stripes-kint-components": "^3.0.3",
     "dom-helpers": "^3.4.0",
     "lodash": "^4.17.11",
