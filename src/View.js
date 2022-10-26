@@ -186,12 +186,10 @@ const EResources = ({
                   }
                   id="pane-eresources-list"
                   padContent={false}
-                  paneSub={() => {
-                    if (source && source.loaded()) {
-                      return <FormattedMessage id="stripes-smart-components.searchResultsCountHeader" values={{ count }} />;
-                    }
-                    return <FormattedMessage id="stripes-smart-components.searchCriteria" />;
-                  }
+                  paneSub={
+                    source && source.loaded() ?
+                      <FormattedMessage id="stripes-smart-components.searchResultsCountHeader" values={{ count }} /> :
+                      <FormattedMessage id="stripes-smart-components.searchCriteria" />
                   }
                   paneTitle={<FormattedMessage id="ui-plugin-find-eresource.eresources" />}
                 >

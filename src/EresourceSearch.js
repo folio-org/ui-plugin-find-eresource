@@ -40,6 +40,7 @@ const EresourceSearch = (props) => {
   const renderDefaultTrigger = () => {
     return (
       <Button
+        key="default-render-trigger"
         buttonRef={modalTrigger}
         buttonStyle="primary noRightRadius"
         id={triggerId}
@@ -64,6 +65,7 @@ const EresourceSearch = (props) => {
     <>
       {renderTriggerButton()}
       <Modal
+        key="plugin-modal"
         modalRef={modalRef}
         onClose={closeModal}
         open={open}
