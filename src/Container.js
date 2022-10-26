@@ -132,9 +132,9 @@ const Container = ({
 
 Container.propTypes = {
   onSelectRow: PropTypes.func.isRequired,
-  showPackages(props, propName) {
-    if (!props.showTitles && !props[propName]) {
-      return new Error(`Both showTitles and ${propName} props cannot be false`);
+  showPackages(props) {
+    if (props.showTitles === false && props.showPackages === false) {
+      return new Error('Both showTitles and showPackages props cannot be false');
     }
     return null;
   },
