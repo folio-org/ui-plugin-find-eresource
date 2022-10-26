@@ -65,7 +65,7 @@ const EresourceSearch = (props) => {
       {renderTriggerButton()}
       <Modal
         modalRef={modalRef}
-        onClose={closeModal}
+        onCloseModal={closeModal}
         open={open}
         {...props}
       />
