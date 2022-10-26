@@ -1,7 +1,14 @@
 # Change history for ui-plugin-find-eresource
-## 4.3.0 In progress
+## 4.3.0 2022-10-26
+* ERM-2393 Remove @folio/stripes-testing as direct dependency of ui-plugin-find-eresource
+* ERM-2381 query-string is incorrectly listed as a peer-dependency
+* ERM-2375 Kint components dep not declared in ui-plugin-find-eresource
+* ERM-2325 stripes-erm-components should be a peer
+* ERM-2227 Karma tests fail on Github Actions CI with Node v14 and v16 LTS
+* ERM-2220 ERM Comparisons: e-resources plugin is not filtering by Package when used for first time
+  * As part of this, refactor to react-query
+* ERM-2152 update outdated dependencies in ui-plugin-find-eresource
 * Bump to stripes-erm-components ^7.0.0
-
 
 ## 4.2.0 2022-07-05
 * ERM-2135 ui-plugin-find-eresource should use values not labels when apply filters
