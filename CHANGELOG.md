@@ -1,4 +1,6 @@
 # Change history for ui-plugin-find-eresource
+## 4.4.0 In progress
+
 ## 4.3.0 2022-10-26
 * ERM-2393 Remove @folio/stripes-testing as direct dependency of ui-plugin-find-eresource
 * ERM-2381 query-string is incorrectly listed as a peer-dependency
