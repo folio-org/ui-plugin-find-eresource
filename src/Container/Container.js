@@ -8,7 +8,7 @@ import { generateKiwtQueryParams, useRefdata } from '@k-int/stripes-kint-compone
 import { useOkapiKy } from '@folio/stripes/core';
 import { getRefdataValuesByDesc, useInfiniteFetch } from '@folio/stripes-erm-components';
 
-import View from './View';
+import View from '../View';
 
 const [
   CONTENT_TYPE,
