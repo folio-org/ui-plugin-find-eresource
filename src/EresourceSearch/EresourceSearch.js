@@ -43,6 +43,7 @@ const EresourceSearch = (props) => {
         key="default-render-trigger"
         buttonRef={modalTrigger}
         buttonStyle="primary noRightRadius"
+        data-testid="default-trigger"
         id={triggerId}
         onClick={openModal}
       >
