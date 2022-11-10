@@ -8,7 +8,7 @@ import { generateKiwtQueryParams, useRefdata } from '@k-int/stripes-kint-compone
 import { useOkapiKy } from '@folio/stripes/core';
 import { getRefdataValuesByDesc, useInfiniteFetch } from '@folio/stripes-erm-components';
 
-import View from './View';
+import View from '../View';
 
 const [
   CONTENT_TYPE,
@@ -95,7 +95,7 @@ const Container = ({
     ['ERM', 'EResources', eresourcesQueryParams, ERESOURCES_ELECTRONIC_ENDPOINT],
     ({ pageParam = 0 }) => {
       const params = [...eresourcesQueryParams, `offset=${pageParam}`];
-      return ky.get(encodeURI(`${ERESOURCES_ELECTRONIC_ENDPOINT}?${params?.join('&')}`)).json();
+      return ky.get(`${ERESOURCES_ELECTRONIC_ENDPOINT}?${params?.join('&')}`).json();
     }
   );
 

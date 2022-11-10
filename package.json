@@ -7,7 +7,7 @@
   },
   "license": "Apache-2.0",
   "scripts": {
-    "test": "yarn run test:bigtest",
+    "test": "yarn run test:jest && yarn run test:bigtest",
     "test:bigtest": "stripes test karma",
     "test:jest": "jest --ci --coverage",
     "lint": "eslint .",
@@ -81,7 +81,7 @@
     "typescript": "^2.8.0"
   },
   "dependencies": {
-    "@k-int/stripes-kint-components": "^3.0.3",
+    "@k-int/stripes-kint-components": "^4.0.0",
     "dom-helpers": "^3.4.0",
     "lodash": "^4.17.11",
     "query-string": "^7.1.1",
