@@ -1,11 +1,11 @@
 import { React } from 'react';
-import '@folio/stripes-erm-components/test/jest/__mock__';
+
 
 import {
   mockKintComponents,
   mockErmComponents,
   renderWithIntl
-} from '@folio/stripes-erm-components/test/jest/helpers';
+} from '@folio/stripes-erm-testing';
 import { MemoryRouter } from 'react-router-dom';
 import translationsProperties from '../../test/helpers';
 
