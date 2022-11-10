@@ -26,7 +26,7 @@ import {
   getResourceIdentifier,
   getSiblingIdentifier
 } from '@folio/stripes-erm-components';
-import Filters from './Filters';
+import Filters from '../Filters';
 
 import css from './View.css';
 
