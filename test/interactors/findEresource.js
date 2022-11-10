@@ -8,7 +8,7 @@ import {
   isPresent,
 } from '@bigtest/interactor';
 
-import css from '../../src/EresourceSearch.css';
+import css from '../../src/EresourceSearch/EresourceSearch.css';
 
 @interactor class SearchField {
   static defaultScope = '[data-test-eresource-search-input]';
