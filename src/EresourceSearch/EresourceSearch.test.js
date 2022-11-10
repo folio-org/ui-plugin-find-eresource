@@ -1,10 +1,10 @@
 import { React } from 'react';
 import user from '@testing-library/user-event';
-import '@folio/stripes-erm-components/test/jest/__mock__';
+
 import {
   mockKintComponents,
   renderWithIntl
-} from '@folio/stripes-erm-components/test/jest/helpers';
+} from '@folio/stripes-erm-testing';
 import translationsProperties from '../../test/helpers';
 import EresourceSearch from './EresourceSearch';
 
