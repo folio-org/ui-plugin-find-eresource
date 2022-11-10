@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { Modal } from '@folio/stripes/components';
 
 import Container from '../Container';
-import css from '../View';
+import css from '../EresourceSearch.css';
 
 const EresourceSearchModal = (props) => {
   const {
