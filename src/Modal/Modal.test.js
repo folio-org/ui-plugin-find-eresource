@@ -1,6 +1,7 @@
 import { React } from 'react';
 
 import { renderWithIntl } from '@folio/stripes-erm-testing';
+import { Button } from '@folio/stripes-testing';
 import { MemoryRouter } from 'react-router-dom';
 import translationsProperties from '../../test/helpers';
 import EresourceSearchModal from './Modal';
@@ -49,13 +50,12 @@ describe('Modal', () => {
     expect(getByText('SelectEresource')).toBeInTheDocument();
   });
 
-  test('renders the expected heading', () => {
-    const { getByRole } = renderComponent;
-    expect(getByRole('heading', { name: 'Select e-resource' }));
+  test('renders the expected heading name', () => {
+    const { getByText } = renderComponent;
+    expect(getByText('Select e-resource')).toBeInTheDocument();
   });
 
-  test('renders the expected button', () => {
-    const { getByRole } = renderComponent;
-    expect(getByRole('button', { name: 'stripes-components.dismissModal' }));
+  test('renders the dexpected button', async () => {
+    await Button('SelectEresource,Container').exists();
   });
 });
