@@ -1,5 +1,6 @@
 # Change history for ui-plugin-find-eresource
 ## 4.4.0 In progress
+* ERM-2615 Drop unneeded `react-redux`.
 
 ## 4.3.0 2022-10-26
 * ERM-2393 Remove @folio/stripes-testing as direct dependency of ui-plugin-find-eresource
