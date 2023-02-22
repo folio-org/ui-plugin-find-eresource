@@ -1,4 +1,6 @@
 # Change history for ui-plugin-find-eresource
+
+## 5.1.0 In progress
 ## 5.0.2 2023-02-22
 * ERM-2615 Drop unneeded `react-redux`.
 * ERM-2558 Increment ui-plugin-find-eresource to Stripes v8
