@@ -1,5 +1,5 @@
 # Change history for ui-plugin-find-eresource
-## 5.0.0 2023-02-22
+## 5.0.1 2023-02-22
 * ERM-2615 Drop unneeded `react-redux`.
 * ERM-2558 Increment ui-plugin-find-eresource to Stripes v8
 * ERM-2532 Remove BigTest/Nightmare dependencies and tests (ui-plugin-find-eresource)
@@ -10,6 +10,7 @@
 * ERM-2410 Add test coverage for ui-plugin-find-eresource <Container>
 * ERM-2393 Remove @folio/stripes-testing as direct dependency of ui-plugin-find-eresource
 * ERM-1306 Add test coverage for ui-plugin-find-eresource <EresourceSearch>
+* Remove karma test options from github release actions
 
 ## 4.3.0 2022-10-26
 * ERM-2393 Remove @folio/stripes-testing as direct dependency of ui-plugin-find-eresource
