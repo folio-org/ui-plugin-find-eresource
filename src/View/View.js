@@ -34,6 +34,9 @@ const propTypes = {
   data: PropTypes.shape({
     eresources: PropTypes.arrayOf(PropTypes.object).isRequired,
   }),
+  initialFilterState: PropTypes.object,
+  initialSearchState: PropTypes.object,
+  initialSortState: PropTypes.object,
   onNeedMoreData: PropTypes.func.isRequired,
   onSelectRow: PropTypes.func.isRequired,
   queryGetter: PropTypes.func.isRequired,
@@ -41,6 +44,7 @@ const propTypes = {
   selectedRecordId: PropTypes.string,
   showPackages: PropTypes.bool,
   showTitles: PropTypes.bool,
+  sortableColumns: PropTypes.arrayOf(PropTypes.string),
   source: PropTypes.shape({
     loaded: PropTypes.func,
     totalCount: PropTypes.func,
@@ -50,11 +54,15 @@ const propTypes = {
 
 const EResources = ({
   data = {},
+  initialFilterState = {},
+  initialSearchState = { query: '' },
+  initialSortState = { sort: 'name' },
   onNeedMoreData,
   onSelectRow,
   queryGetter,
   querySetter,
   selectedRecordId,
+  sortableColumns = ['name'],
   source,
   showPackages,
   showTitles,
@@ -68,20 +76,13 @@ const EResources = ({
 
   const [filterPaneIsVisible, setFilterPaneIsVisible] = useState(true);
   const toggleFilterPane = () => setFilterPaneIsVisible(!filterPaneIsVisible);
-  let initialFilterState = {};
-  let sortableColumns = ['name', 'type'];
-
-  if (!showPackages) initialFilterState = { class: ['nopackage'] };
-  else if (!showTitles) initialFilterState = { class: ['package'] };
-
-  if (showPackages && !showTitles) sortableColumns = ['name'];
 
   return (
     <div data-test-eresources>
       <SearchAndSortQuery
         initialFilterState={initialFilterState}
-        initialSearchState={{ query: '' }}
-        initialSortState={{ sort: 'name' }}
+        initialSearchState={initialSearchState}
+        initialSortState={initialSortState}
         queryGetter={queryGetter}
         querySetter={querySetter}
         setQueryOnMount
