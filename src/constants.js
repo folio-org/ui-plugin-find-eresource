@@ -7,12 +7,14 @@ export const PACKAGES_ENDPOINT = 'erm/packages';
 export const TITLES_ENDPOINT = 'erm/titles/electronic';
 
 export const [
+  AVAILABILITY_CONSTRAINT,
   CONTENT_TYPE,
   LIFECYCLE_STATUS,
   PUB_TYPE,
   SCOPE,
   TYPE
 ] = [
+  'AvailabilityConstraint.Body',
   'ContentType.ContentType',
   'Pkg.LifecycleStatus',
   'TitleInstance.PublicationType',

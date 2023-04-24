@@ -1,4 +1,22 @@
 import PropTypes from 'prop-types';
+import { useQuery } from 'react-query';
+
+import { useRefdata } from '@k-int/stripes-kint-components';
+
+import { useOkapiKy } from '@folio/stripes/core';
+import { getRefdataValuesByDesc } from '@folio/stripes-erm-components';
+
+import {
+  AVAILABILITY_CONSTRAINT,
+  CONTENT_TYPE,
+  KBS_ENDPOINT,
+  LIFECYCLE_STATUS,
+  PUB_TYPE,
+  REFDATA_ENDPOINT,
+  SCOPE,
+  TYPE
+} from '../constants';
+
 import {
   JointContainer,
   PackageContainer,
@@ -17,10 +35,39 @@ const Container = ({
   showPackages = true,
   showTitles = true,
 }) => {
+  const ky = useOkapiKy();
+
+  const refdata = useRefdata({
+    desc: [
+      AVAILABILITY_CONSTRAINT,
+      CONTENT_TYPE,
+      LIFECYCLE_STATUS,
+      PUB_TYPE,
+      SCOPE,
+      TYPE
+    ],
+    endpoint: REFDATA_ENDPOINT
+  });
+
+  const { data: kbs = [] } = useQuery(
+    ['ERM', 'KnowledgeBases', KBS_ENDPOINT],
+    () => ky.get(KBS_ENDPOINT).json()
+  );
+
+  const sharedData = {
+    availabilityValues: getRefdataValuesByDesc(refdata, AVAILABILITY_CONSTRAINT),
+    contentTypeValues: getRefdataValuesByDesc(refdata, CONTENT_TYPE),
+    scopeValues: getRefdataValuesByDesc(refdata, SCOPE),
+    sourceValues: kbs,
+    statusValues: getRefdataValuesByDesc(refdata, LIFECYCLE_STATUS),
+    typeValues: getRefdataValuesByDesc(refdata, TYPE),
+  };
+
   if (showPackages && showTitles) {
     return (
       <JointContainer
         onSelectRow={onSelectRow}
+        sharedData={sharedData}
         showPackages={showPackages}
         showTitles={showTitles}
       />
@@ -31,6 +78,7 @@ const Container = ({
     return (
       <PackageContainer
         onSelectRow={onSelectRow}
+        sharedData={sharedData}
         showPackages={showPackages}
         showTitles={showTitles}
       />
@@ -41,6 +89,7 @@ const Container = ({
     return (
       <TitleContainer
         onSelectRow={onSelectRow}
+        sharedData={sharedData}
         showPackages={showPackages}
         showTitles={showTitles}
       />

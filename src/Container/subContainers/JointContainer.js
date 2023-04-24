@@ -1,30 +1,22 @@
 /* This Container will handle the use case for combined Package/Title plugin */
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 
-import { useQuery } from 'react-query';
-
-import { generateKiwtQueryParams, useRefdata } from '@k-int/stripes-kint-components';
+import { generateKiwtQueryParams } from '@k-int/stripes-kint-components';
 
 import { AppIcon, useOkapiKy } from '@folio/stripes/core';
-import { getRefdataValuesByDesc, useInfiniteFetch } from '@folio/stripes-erm-components';
+import { useInfiniteFetch } from '@folio/stripes-erm-components';
 
 import View from '../../View';
 import {
-  CONTENT_TYPE,
   ERESOURCES_ELECTRONIC_ENDPOINT,
   FETCH_INCREMENT,
-  KBS_ENDPOINT,
-  LIFECYCLE_STATUS,
-  PUB_TYPE,
-  REFDATA_ENDPOINT,
-  SCOPE,
-  TYPE
 } from '../../constants';
-import { FormattedMessage } from 'react-intl';
 
 const JointContainer = ({
   onSelectRow,
+  sharedData = {},
   showPackages = true,
   showTitles = true,
 }) => {
@@ -36,17 +28,6 @@ const JointContainer = ({
       searchField.current.focus();
     }
   }, []); // This isn't particularly great, but in the interests of saving time migrating, it will have to do
-
-  const refdata = useRefdata({
-    desc: [
-      CONTENT_TYPE,
-      LIFECYCLE_STATUS,
-      PUB_TYPE,
-      SCOPE,
-      TYPE
-    ],
-    endpoint: REFDATA_ENDPOINT
-  });
 
   // We only need local session query here, use state
   const [query, setQuery] = useState({});
@@ -95,11 +76,6 @@ const JointContainer = ({
     }
   );
 
-  const { data: kbs = [] } = useQuery(
-    ['ERM', 'KnowledgeBases', KBS_ENDPOINT],
-    () => ky.get(KBS_ENDPOINT).json()
-  );
-
   /*
    * We are splitting the Joint/Package/Title sections,
    * so any specific SASQ props live at this level now, eg
@@ -113,8 +89,7 @@ const JointContainer = ({
       appIcon={<AppIcon app="agreements" iconKey="eresource" />}
       data={{
         eresources,
-        sourceValues: kbs,
-        typeValues: getRefdataValuesByDesc(refdata, TYPE),
+        ...sharedData
       }}
       initialFilterState={{}}
       initialSearchState={{ query: '' }}
@@ -146,6 +121,7 @@ const JointContainer = ({
 
 JointContainer.propTypes = {
   onSelectRow: PropTypes.func.isRequired,
+  sharedData: PropTypes.object,
   showPackages(props) {
     if (props.showTitles === false && props.showPackages === false) {
       return new Error('Both showTitles and showPackages props cannot be false');
