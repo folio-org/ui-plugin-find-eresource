@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
+import { AppIcon } from '@folio/stripes/core';
+
 import {
   MultiColumnList,
   SearchField,
@@ -11,8 +13,6 @@ import {
   PaneMenu,
   Paneset,
 } from '@folio/stripes/components';
-
-import { AppIcon } from '@folio/stripes/core';
 
 import {
   CollapseFilterPaneButton,
@@ -30,35 +30,31 @@ import Filters from '../Filters';
 
 import css from './View.css';
 
-const propTypes = {
-  data: PropTypes.shape({
-    eresources: PropTypes.arrayOf(PropTypes.object).isRequired,
-  }),
-  onNeedMoreData: PropTypes.func.isRequired,
-  onSelectRow: PropTypes.func.isRequired,
-  queryGetter: PropTypes.func.isRequired,
-  querySetter: PropTypes.func.isRequired,
-  selectedRecordId: PropTypes.string,
-  showPackages: PropTypes.bool,
-  showTitles: PropTypes.bool,
-  source: PropTypes.shape({
-    loaded: PropTypes.func,
-    totalCount: PropTypes.func,
-  }),
-  syncToLocationSearch: PropTypes.bool
-};
-
+/*
+ * Bear in mind that we have split the plugin into 3,
+ * but from the View down all options are managed by
+ * the same components, so need to cater for Packages AND Titles
+ * (and all combinations thereof)
+ */
 const EResources = ({
+  appIcon,
   data = {},
+  iconKey = 'eresource',
+  initialFilterState = {},
+  initialSearchState = { query: '' },
+  initialSortState = { sort: 'name' },
   onNeedMoreData,
   onSelectRow,
+  paneTitle,
   queryGetter,
   querySetter,
   selectedRecordId,
+  sortableColumns = ['name'],
   source,
   showPackages,
   showTitles,
-  syncToLocationSearch
+  syncToLocationSearch,
+  visibleColumns = ['name', 'type', 'isbn', 'eissn', 'pissn']
 }) => {
   const count = source?.totalCount() ?? 0;
   const query = queryGetter() ?? {};
@@ -68,20 +64,13 @@ const EResources = ({
 
   const [filterPaneIsVisible, setFilterPaneIsVisible] = useState(true);
   const toggleFilterPane = () => setFilterPaneIsVisible(!filterPaneIsVisible);
-  let initialFilterState = {};
-  let sortableColumns = ['name', 'type'];
-
-  if (!showPackages) initialFilterState = { class: ['nopackage'] };
-  else if (!showTitles) initialFilterState = { class: ['package'] };
-
-  if (showPackages && !showTitles) sortableColumns = ['name'];
 
   return (
     <div data-test-eresources>
       <SearchAndSortQuery
         initialFilterState={initialFilterState}
-        initialSearchState={{ query: '' }}
-        initialSortState={{ sort: 'name' }}
+        initialSearchState={initialSearchState}
+        initialSortState={initialSortState}
         queryGetter={queryGetter}
         querySetter={querySetter}
         setQueryOnMount
@@ -169,7 +158,7 @@ const EResources = ({
                   </Pane>
                 }
                 <Pane
-                  appIcon={<AppIcon app="agreements" iconKey="eresource" />}
+                  appIcon={appIcon}
                   defaultWidth="fill"
                   firstMenu={
                     !filterPaneIsVisible ?
@@ -191,7 +180,7 @@ const EResources = ({
                       <FormattedMessage id="stripes-smart-components.searchResultsCountHeader" values={{ count }} /> :
                       <FormattedMessage id="stripes-smart-components.searchCriteria" />
                   }
-                  paneTitle={<FormattedMessage id="ui-plugin-find-eresource.eresources" />}
+                  paneTitle={paneTitle}
                 >
                   <MultiColumnList
                     autosize
@@ -201,6 +190,8 @@ const EResources = ({
                       isbn: <FormattedMessage id="ui-plugin-find-eresource.prop.isbn" />,
                       eissn: <FormattedMessage id="ui-plugin-find-eresource.prop.eissn" />,
                       pissn: <FormattedMessage id="ui-plugin-find-eresource.prop.pissn" />,
+                      source: <FormattedMessage id="ui-plugin-find-eresource.prop.source" />,
+                      status: <FormattedMessage id="ui-plugin-find-eresource.prop.status" />,
                     }}
                     columnWidths={{
                       name: 300,
@@ -211,15 +202,28 @@ const EResources = ({
                     }}
                     contentData={data.eresources}
                     formatter={{
-                      name: e => e._object?.longName ?? e.name,
+                      name: e => {
+                        return (
+                          <AppIcon
+                            app="agreements"
+                            iconAlignment="baseline"
+                            iconKey={iconKey}
+                            size="small"
+                          >
+                            {e._object?.longName ?? e.name}
+                          </AppIcon>
+                        );
+                      },
                       type: e => <EResourceType resource={e} />,
                       isbn: e => getResourceIdentifier(e._object, 'isbn'),
                       eissn: e => getResourceIdentifier(e._object, 'eissn'),
                       pissn: e => getResourceIdentifier(e._object, 'pissn') ?? getSiblingIdentifier(e._object, 'issn'),
+                      source: e => (e.source),
+                      status: e => (e.lifecycleStatus?.label),
                     }}
                     id="list-eresources"
                     isEmptyMessage={
-                      source || (!showPackages && !showTitles) ? (
+                      source ? (
                         <div data-test-eresources-no-results-message>
                           <SearchAndSortNoResultsMessage
                             filterPaneIsVisible
@@ -240,7 +244,7 @@ const EResources = ({
                     sortOrder={sortOrder.replace(/^-/, '').replace(/,.*/, '')}
                     totalCount={count}
                     virtualize
-                    visibleColumns={['name', 'type', 'isbn', 'eissn', 'pissn']}
+                    visibleColumns={visibleColumns}
                   />
                 </Pane>
               </Paneset>
@@ -252,6 +256,30 @@ const EResources = ({
   );
 };
 
-EResources.propTypes = propTypes;
+EResources.propTypes = {
+  appIcon: PropTypes.node,
+  data: PropTypes.shape({
+    eresources: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }),
+  iconKey: PropTypes.string,
+  initialFilterState: PropTypes.object,
+  initialSearchState: PropTypes.object,
+  initialSortState: PropTypes.object,
+  onNeedMoreData: PropTypes.func.isRequired,
+  onSelectRow: PropTypes.func.isRequired,
+  paneTitle: PropTypes.node,
+  queryGetter: PropTypes.func.isRequired,
+  querySetter: PropTypes.func.isRequired,
+  selectedRecordId: PropTypes.string,
+  showPackages: PropTypes.bool,
+  showTitles: PropTypes.bool,
+  sortableColumns: PropTypes.arrayOf(PropTypes.string),
+  source: PropTypes.shape({
+    loaded: PropTypes.func,
+    totalCount: PropTypes.func,
+  }),
+  syncToLocationSearch: PropTypes.bool,
+  visibleColumns: PropTypes.arrayOf(PropTypes.string)
+};
 
 export default EResources;

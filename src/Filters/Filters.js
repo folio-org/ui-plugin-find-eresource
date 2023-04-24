@@ -1,62 +1,64 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import { Accordion, AccordionSet, FilterAccordionHeader, Selection } from '@folio/stripes/components';
-import { CheckboxFilter } from '@folio/stripes/smart-components';
+import { CheckboxFilter, MultiSelectionFilter } from '@folio/stripes/smart-components';
 
 const FILTERS = [
-  'type',
+  'availability',
+  'contentType',
+  'publicationType',
+  'scope',
+  'status',
+  'type'
 ];
 
-export default class EResourceFilters extends React.Component {
-  static propTypes = {
-    activeFilters: PropTypes.object,
-    data: PropTypes.object.isRequired,
-    filterHandlers: PropTypes.object,
-    showPackages: PropTypes.bool,
-    showTitles: PropTypes.bool,
-  };
-
-  static defaultProps = {
-    activeFilters: {
-      class: [],
-      type: [],
-    },
-    showPackages: true,
-    showTitles: true
-  };
-
-  state = {
+const Filters = ({
+  data,
+  activeFilters = {
+    class: [],
     type: [],
-  }
+  },
+  filterHandlers,
+  showPackages = true,
+  showTitles = true,
+}) => {
+  const [filterState, setFilterState] = useState({
+    availability: [],
+    contentType: [],
+    publicationType: [],
+    scope: [],
+    status: [],
+    type: []
+  });
 
-  static getDerivedStateFromProps(props, state) {
+  useEffect(() => {
     const newState = {};
-
     FILTERS.forEach(filter => {
-      const values = props.data[`${filter}Values`] || [];
-      if (values.length !== state[filter].length) {
+      const values = data[`${filter}Values`];
+      if (values.length !== filterState[filter]?.length) {
         newState[filter] = values;
       }
     });
 
-    if (Object.keys(newState).length) return newState;
+    if (Object.keys(newState).length) {
+      setFilterState(prevState => ({ ...prevState, ...newState }));
+    }
+  }, [data, filterState]);
 
-    return null;
-  }
 
-  renderIsPackageFilter = () => {
-    const { activeFilters } = this.props;
+  const renderIsPackageFilter = () => {
     const groupFilters = activeFilters.class || [];
 
     return (
       <Accordion
+        key="render-is-package-filter"
         displayClearButton={groupFilters.length > 0}
         header={FilterAccordionHeader}
         id="filter-accordion-is-package"
         label={<FormattedMessage id="ui-plugin-find-eresource.prop.isPackage" />}
-        onClearFilter={() => { this.props.filterHandlers.clearGroup('class'); }}
+        onClearFilter={() => { filterHandlers.clearGroup('class'); }}
         separator={false}
       >
         <CheckboxFilter
@@ -66,7 +68,7 @@ export default class EResourceFilters extends React.Component {
           ]}
           name="class"
           onChange={group => {
-            this.props.filterHandlers.state({
+            filterHandlers.state({
               ...activeFilters,
               [group.name]: group.values
             });
@@ -75,26 +77,26 @@ export default class EResourceFilters extends React.Component {
         />
       </Accordion>
     );
-  }
+  };
 
-  renderCheckboxFilter = (name) => {
-    const { activeFilters } = this.props;
+  const renderCheckboxFilter = (name) => {
     const groupFilters = activeFilters[name] || [];
 
     return (
       <Accordion
+        key={`render-checkbox-filter-${name}`}
         displayClearButton={groupFilters.length > 0}
         header={FilterAccordionHeader}
         id={`filter-accordion-${name}`}
         label={<FormattedMessage id={`ui-plugin-find-eresource.prop.${name}`} />}
-        onClearFilter={() => { this.props.filterHandlers.clearGroup(name); }}
+        onClearFilter={() => { filterHandlers.clearGroup(name); }}
         separator={false}
       >
         <CheckboxFilter
-          dataOptions={this.state[name]}
+          dataOptions={filterState[name]}
           name={name}
           onChange={group => {
-            this.props.filterHandlers.state({
+            filterHandlers.state({
               ...activeFilters,
               [group.name]: group.values
             });
@@ -103,45 +105,88 @@ export default class EResourceFilters extends React.Component {
         />
       </Accordion>
     );
-  }
+  };
 
-  renderRemoteKbFilter = () => {
-    const remoteKbValues = this.props.data.sourceValues;
-    const dataOptions = remoteKbValues.map(remoteKb => ({
+  const renderRemoteKbFilter = () => {
+    const dataOptions = data.sourceValues.map(remoteKb => ({
       label: remoteKb.name,
       value: remoteKb.id,
     }));
 
-    const { activeFilters } = this.props;
     const remoteKbFilters = activeFilters.remoteKb || [];
 
     return (
       <Accordion
+        key="render-remote-kb-filter"
         displayClearButton={remoteKbFilters.length > 0}
         header={FilterAccordionHeader}
         id="filter-accordion-remoteKb"
         label={<FormattedMessage id="ui-plugin-find-eresource.prop.sourceKb" />}
-        onClearFilter={() => { this.props.filterHandlers.clearGroup('remoteKb'); }}
+        onClearFilter={() => { filterHandlers.clearGroup('remoteKb'); }}
         separator={false}
       >
         <Selection
           dataOptions={dataOptions}
           id="remoteKb-filter"
-          onChange={value => this.props.filterHandlers.state({ ...activeFilters, remoteKb: [value] })}
+          onChange={value => filterHandlers.state({ ...activeFilters, remoteKb: [value] })}
           value={remoteKbFilters[0] || ''}
         />
       </Accordion>
     );
-  }
+  };
 
-  render() {
-    const { showPackages, showTitles } = this.props;
+  const renderAvailabilityFilter = () => {
+    const availabilityFilters = activeFilters.availability || [];
+
     return (
-      <AccordionSet>
-        {showTitles && this.renderCheckboxFilter('type')}
-        {showTitles && showPackages && this.renderIsPackageFilter()}
-        {showPackages && this.renderRemoteKbFilter()}
-      </AccordionSet>
+      <Accordion
+        key="render-availability-filter"
+        displayClearButton={availabilityFilters.length > 0}
+        header={FilterAccordionHeader}
+        id="clickable-availability-filter"
+        label={<FormattedMessage id="ui-agreements.eresources.availability" />}
+        onClearFilter={() => { filterHandlers.clearGroup('availability'); }}
+        separator={false}
+      >
+        <MultiSelectionFilter
+          dataOptions={filterState.availability || []}
+          id="availability-filter"
+          name="availability"
+          onChange={e => filterHandlers.state({ ...activeFilters, availability: e.values })}
+          selectedValues={availabilityFilters}
+        />
+      </Accordion>
     );
-  }
-}
+  };
+
+  const renderTitleFilters = () => ([
+    renderCheckboxFilter('type'),
+    renderCheckboxFilter('publicationType')
+  ]);
+
+  const renderPackageFilters = () => ([
+    renderCheckboxFilter('status'),
+    renderCheckboxFilter('scope'),
+    renderAvailabilityFilter(),
+    renderCheckboxFilter('contentType'),
+    renderRemoteKbFilter()
+  ]);
+
+  return (
+    <AccordionSet>
+      {showTitles && showPackages && renderIsPackageFilter()}
+      {showTitles && renderTitleFilters()}
+      {showPackages && renderPackageFilters()}
+    </AccordionSet>
+  );
+};
+
+Filters.propTypes = {
+  activeFilters: PropTypes.object,
+  data: PropTypes.object.isRequired,
+  filterHandlers: PropTypes.object,
+  showPackages: PropTypes.bool,
+  showTitles: PropTypes.bool,
+};
+
+export default Filters;

@@ -1,17 +1,14 @@
-import { React } from 'react';
-
-
 import {
   mockKintComponents,
   mockErmComponents,
   renderWithIntl
 } from '@folio/stripes-erm-testing';
+
 import { MemoryRouter } from 'react-router-dom';
+
 import translationsProperties from '../../test/helpers';
 
 import Container from './Container';
-
-jest.mock('../View', () => () => <div>View</div>);
 
 jest.mock('@k-int/stripes-kint-components', () => ({
   ...jest.requireActual('@k-int/stripes-kint-components'),
@@ -25,26 +22,65 @@ jest.mock('@folio/stripes-erm-components', () => ({
 
 const onSelectRow = jest.fn();
 
+jest.mock('./subContainers/JointContainer', () => () => <div>JointContainer</div>);
+jest.mock('./subContainers/PackageContainer', () => () => <div>PackageContainer</div>);
+jest.mock('./subContainers/TitleContainer', () => () => <div>TitleContainer</div>);
+
 describe('Container', () => {
   let renderComponent;
-  beforeEach(() => {
-    renderComponent = renderWithIntl(
-      <MemoryRouter>
-        <Container
-          onSelectRow={onSelectRow}
-          showPackages
-        />
-      </MemoryRouter>,
-      translationsProperties
-    );
+  describe('Container with showPackage and showTitle', () => {
+    beforeEach(() => {
+      renderComponent = renderWithIntl(
+        <MemoryRouter>
+          <Container
+            onSelectRow={onSelectRow}
+          />
+        </MemoryRouter>,
+        translationsProperties
+      );
+    });
+
+    test('renders the JointContainer component', () => {
+      const { getByText } = renderComponent;
+      expect(getByText('JointContainer')).toBeInTheDocument();
+    });
   });
 
-  test('renders the View component', () => {
-    const { getByText } = renderComponent;
-    expect(getByText('View')).toBeInTheDocument();
+  describe('Container with showPackage', () => {
+    beforeEach(() => {
+      renderComponent = renderWithIntl(
+        <MemoryRouter>
+          <Container
+            onSelectRow={onSelectRow}
+            showTitles={false}
+          />
+        </MemoryRouter>,
+        translationsProperties
+      );
+    });
+
+    test('renders the PackageContainer component', () => {
+      const { getByText } = renderComponent;
+      expect(getByText('PackageContainer')).toBeInTheDocument();
+    });
   });
 
-  test('should handle onSelectRow', () => {
-    expect(onSelectRow).not.toHaveBeenCalled();
+  describe('Container with showTitle', () => {
+    beforeEach(() => {
+      renderComponent = renderWithIntl(
+        <MemoryRouter>
+          <Container
+            onSelectRow={onSelectRow}
+            showPackages={false}
+          />
+        </MemoryRouter>,
+        translationsProperties
+      );
+    });
+
+    test('renders the TitleContainer component', () => {
+      const { getByText } = renderComponent;
+      expect(getByText('TitleContainer')).toBeInTheDocument();
+    });
   });
 });

@@ -40,35 +40,53 @@ describe('Filters', () => {
     await Accordion('Type').is({ open: true });
   });
 
-  test('renders Type Checkboxs', async () => {
-    await Checkbox({ id: 'clickable-filter-type-monograph' }).exists();
-    await Checkbox({ id: 'clickable-filter-type-serial' }).exists();
-  });
+  /*
+   * EXAMPLE This helper function will test existence of checkboxes
+   * for each of the values defined in testResources refdata
+   * and also whether they are all clickable.
+   */
+  let index = 1;
+  const testNamedFilterCheckboxes = (name) => {
+    describe(`${name} filter`, () => {
+      const promiseList = [];
+      const valuesList = [];
+      data?.[`${name}Values`]?.forEach((value) => {
+        promiseList.push(Checkbox({ id: `clickable-filter-${name}-${value?.value}` }).exists());
+        valuesList.push(value?.value);
+      });
 
-  test('renders Is package Checkboxs', async () => {
+      test(`renders all ${name} checkboxes`, () => {
+        Promise.all(promiseList);
+      });
+
+      valuesList.forEach((value) => {
+        test(`clicking the ${value} checkbox within the ${name} filter`, async () => {
+          await waitFor(async () => {
+            await Checkbox({ id: `clickable-filter-${name}-${value}` }).click();
+          });
+
+          await waitFor(() => {
+            expect(stateMock.mock.calls.length).toEqual(index);
+          });
+
+          index++;
+        });
+      });
+    });
+  };
+
+  testNamedFilterCheckboxes('type');
+  testNamedFilterCheckboxes('publicationType');
+  testNamedFilterCheckboxes('status');
+  testNamedFilterCheckboxes('scope');
+  testNamedFilterCheckboxes('contentType');
+
+  test('renders IsPackage Checkboxes', async () => {
     await Checkbox({ id: 'clickable-filter-class-package' }).exists();
     await Checkbox({ id: 'clickable-filter-class-nopackage' }).exists();
   });
 
-  let index = 1;
-  const testFilterCheckbox = (field, value) => (
-    test(`clicking the ${value} checkbox`, async () => {
-      await waitFor(async () => {
-        await Checkbox({ id: `clickable-filter-${field}-${value}` }).click();
-      });
-
-      await waitFor(() => {
-        expect(stateMock.mock.calls.length).toEqual(index);
-      });
-
-      index++;
-    })
-  );
-
-  testFilterCheckbox('type', 'monograph');
-  testFilterCheckbox('type', 'serial');
-
-  test('renders the Is package Accordion', async () => {
+  test('renders the IsPackage Accordion', async () => {
     await Accordion('Is package').exists();
   });
 
