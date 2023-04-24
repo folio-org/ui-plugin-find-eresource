@@ -53,6 +53,7 @@ const Filters = ({
 
     return (
       <Accordion
+        key="render-is-package-filter"
         displayClearButton={groupFilters.length > 0}
         header={FilterAccordionHeader}
         id="filter-accordion-is-package"
@@ -83,6 +84,7 @@ const Filters = ({
 
     return (
       <Accordion
+        key={`render-checkbox-filter-${name}`}
         displayClearButton={groupFilters.length > 0}
         header={FilterAccordionHeader}
         id={`filter-accordion-${name}`}
@@ -115,6 +117,7 @@ const Filters = ({
 
     return (
       <Accordion
+        key="render-remote-kb-filter"
         displayClearButton={remoteKbFilters.length > 0}
         header={FilterAccordionHeader}
         id="filter-accordion-remoteKb"
@@ -137,6 +140,7 @@ const Filters = ({
 
     return (
       <Accordion
+        key="render-availability-filter"
         displayClearButton={availabilityFilters.length > 0}
         header={FilterAccordionHeader}
         id="clickable-availability-filter"
