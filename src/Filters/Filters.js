@@ -160,7 +160,8 @@ const Filters = ({
   };
 
   const renderTitleFilters = () => ([
-    renderCheckboxFilter('type')
+    renderCheckboxFilter('type'),
+    renderCheckboxFilter('publicationType')
   ]);
 
   const renderPackageFilters = () => ([
