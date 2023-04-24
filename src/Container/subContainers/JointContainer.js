@@ -6,7 +6,7 @@ import { useQuery } from 'react-query';
 
 import { generateKiwtQueryParams, useRefdata } from '@k-int/stripes-kint-components';
 
-import { useOkapiKy } from '@folio/stripes/core';
+import { AppIcon, useOkapiKy } from '@folio/stripes/core';
 import { getRefdataValuesByDesc, useInfiniteFetch } from '@folio/stripes-erm-components';
 
 import View from '../../View';
@@ -21,6 +21,7 @@ import {
   SCOPE,
   TYPE
 } from '../../constants';
+import { FormattedMessage } from 'react-intl';
 
 const JointContainer = ({
   onSelectRow,
@@ -103,9 +104,13 @@ const JointContainer = ({
    * We are splitting the Joint/Package/Title sections,
    * so any specific SASQ props live at this level now, eg
    * "initialFilterState" or "sortableColumns"
+   *
+   * Also make use of this for any other props that may change at the view level,
+   * such as the app icon and label
    */
   return (
     <View
+      appIcon={<AppIcon app="agreements" iconKey="eresource" />}
       data={{
         eresources,
         sourceValues: kbs,
@@ -116,6 +121,7 @@ const JointContainer = ({
       initialSortState={{ sort: 'name' }}
       onNeedMoreData={(_askAmount, index) => fetchNextEresourcesPage({ pageParam: index })}
       onSelectRow={onSelectRow}
+      paneTitle={<FormattedMessage id="ui-plugin-find-eresource.eresources" />}
       queryGetter={queryGetter}
       querySetter={querySetter}
       /*

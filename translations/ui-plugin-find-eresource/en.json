@@ -5,6 +5,9 @@
   "selectEresource": "Select e-resource",
 
   "eresources": "E-resources",
+  "packages": "Packages",
+  "titles": "Titles",
+
   "package": "Package",
   "searchInputLabel": "Search e-resources",
   "title": "Title",

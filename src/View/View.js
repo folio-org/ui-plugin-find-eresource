@@ -12,8 +12,6 @@ import {
   Paneset,
 } from '@folio/stripes/components';
 
-import { AppIcon } from '@folio/stripes/core';
-
 import {
   CollapseFilterPaneButton,
   ExpandFilterPaneButton,
@@ -37,12 +35,14 @@ import css from './View.css';
  * (and all combinations thereof)
  */
 const EResources = ({
+  appIcon,
   data = {},
   initialFilterState = {},
   initialSearchState = { query: '' },
   initialSortState = { sort: 'name' },
   onNeedMoreData,
   onSelectRow,
+  paneTitle,
   queryGetter,
   querySetter,
   selectedRecordId,
@@ -154,7 +154,7 @@ const EResources = ({
                   </Pane>
                 }
                 <Pane
-                  appIcon={<AppIcon app="agreements" iconKey="eresource" />}
+                  appIcon={appIcon}
                   defaultWidth="fill"
                   firstMenu={
                     !filterPaneIsVisible ?
@@ -176,7 +176,7 @@ const EResources = ({
                       <FormattedMessage id="stripes-smart-components.searchResultsCountHeader" values={{ count }} /> :
                       <FormattedMessage id="stripes-smart-components.searchCriteria" />
                   }
-                  paneTitle={<FormattedMessage id="ui-plugin-find-eresource.eresources" />}
+                  paneTitle={paneTitle}
                 >
                   <MultiColumnList
                     autosize
@@ -238,6 +238,7 @@ const EResources = ({
 };
 
 EResources.propTypes = {
+  appIcon: PropTypes.node,
   data: PropTypes.shape({
     eresources: PropTypes.arrayOf(PropTypes.object).isRequired,
   }),
@@ -246,6 +247,7 @@ EResources.propTypes = {
   initialSortState: PropTypes.object,
   onNeedMoreData: PropTypes.func.isRequired,
   onSelectRow: PropTypes.func.isRequired,
+  paneTitle: PropTypes.node,
   queryGetter: PropTypes.func.isRequired,
   querySetter: PropTypes.func.isRequired,
   selectedRecordId: PropTypes.string,
