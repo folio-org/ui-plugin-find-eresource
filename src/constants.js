@@ -3,6 +3,8 @@ export const FETCH_INCREMENT = 25;
 export const KBS_ENDPOINT = 'erm/kbs';
 export const REFDATA_ENDPOINT = 'erm/refdata';
 export const ERESOURCES_ELECTRONIC_ENDPOINT = 'erm/resource/electronic';
+export const PACKAGES_ENDPOINT = 'erm/packages';
+export const TITLES_ENDPOINT = 'erm/titles/electronic';
 
 export const [
   CONTENT_TYPE,
