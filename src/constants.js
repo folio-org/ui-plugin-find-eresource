@@ -15,7 +15,7 @@ export const [
   TYPE
 ] = [
   'AvailabilityConstraint.Body',
-  'ContentType.ContentType',
+  'Pkg.ContentType',
   'Pkg.LifecycleStatus',
   'TitleInstance.PublicationType',
   'Pkg.AvailabilityScope',

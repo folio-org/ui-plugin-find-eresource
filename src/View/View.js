@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
+import { AppIcon } from '@folio/stripes/core';
+
 import {
   MultiColumnList,
   SearchField,
@@ -37,6 +39,7 @@ import css from './View.css';
 const EResources = ({
   appIcon,
   data = {},
+  iconKey = 'eresource',
   initialFilterState = {},
   initialSearchState = { query: '' },
   initialSortState = { sort: 'name' },
@@ -50,7 +53,8 @@ const EResources = ({
   source,
   showPackages,
   showTitles,
-  syncToLocationSearch
+  syncToLocationSearch,
+  visibleColumns = ['name', 'type', 'isbn', 'eissn', 'pissn']
 }) => {
   const count = source?.totalCount() ?? 0;
   const query = queryGetter() ?? {};
@@ -186,6 +190,8 @@ const EResources = ({
                       isbn: <FormattedMessage id="ui-plugin-find-eresource.prop.isbn" />,
                       eissn: <FormattedMessage id="ui-plugin-find-eresource.prop.eissn" />,
                       pissn: <FormattedMessage id="ui-plugin-find-eresource.prop.pissn" />,
+                      source: <FormattedMessage id="ui-plugin-find-eresource.prop.source" />,
+                      status: <FormattedMessage id="ui-plugin-find-eresource.prop.status" />,
                     }}
                     columnWidths={{
                       name: 300,
@@ -196,11 +202,24 @@ const EResources = ({
                     }}
                     contentData={data.eresources}
                     formatter={{
-                      name: e => e._object?.longName ?? e.name,
+                      name: e => {
+                        return (
+                          <AppIcon
+                            app="agreements"
+                            iconAlignment="baseline"
+                            iconKey={iconKey}
+                            size="small"
+                          >
+                            {e._object?.longName ?? e.name}
+                          </AppIcon>
+                        );
+                      },
                       type: e => <EResourceType resource={e} />,
                       isbn: e => getResourceIdentifier(e._object, 'isbn'),
                       eissn: e => getResourceIdentifier(e._object, 'eissn'),
                       pissn: e => getResourceIdentifier(e._object, 'pissn') ?? getSiblingIdentifier(e._object, 'issn'),
+                      source: e => (e.source),
+                      status: e => (e.lifecycleStatus?.label),
                     }}
                     id="list-eresources"
                     isEmptyMessage={
@@ -225,7 +244,7 @@ const EResources = ({
                     sortOrder={sortOrder.replace(/^-/, '').replace(/,.*/, '')}
                     totalCount={count}
                     virtualize
-                    visibleColumns={['name', 'type', 'isbn', 'eissn', 'pissn']}
+                    visibleColumns={visibleColumns}
                   />
                 </Pane>
               </Paneset>
@@ -242,6 +261,7 @@ EResources.propTypes = {
   data: PropTypes.shape({
     eresources: PropTypes.arrayOf(PropTypes.object).isRequired,
   }),
+  iconKey: PropTypes.string,
   initialFilterState: PropTypes.object,
   initialSearchState: PropTypes.object,
   initialSortState: PropTypes.object,
@@ -258,7 +278,8 @@ EResources.propTypes = {
     loaded: PropTypes.func,
     totalCount: PropTypes.func,
   }),
-  syncToLocationSearch: PropTypes.bool
+  syncToLocationSearch: PropTypes.bool,
+  visibleColumns: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default EResources;

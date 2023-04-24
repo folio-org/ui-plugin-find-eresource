@@ -82,15 +82,17 @@ const JointContainer = ({
    * "initialFilterState" or "sortableColumns"
    *
    * Also make use of this for any other props that may change at the view level,
-   * such as the app icon and label
+   * such as the app icon, label and visible columns
    */
+  const iconKey = 'eresource';
   return (
     <View
-      appIcon={<AppIcon app="agreements" iconKey="eresource" />}
+      appIcon={<AppIcon app="agreements" iconKey={iconKey} />}
       data={{
         eresources,
         ...sharedData
       }}
+      iconKey={iconKey}
       initialFilterState={{}}
       initialSearchState={{ query: '' }}
       initialSortState={{ sort: 'name' }}
@@ -115,6 +117,7 @@ const JointContainer = ({
         failureMessage: () => eresourcesError.message
       }}
       syncToLocationSearch={false}
+      visibleColumns={['name', 'type', 'isbn', 'eissn', 'pissn']}
     />
   );
 };

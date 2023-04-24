@@ -75,15 +75,18 @@ const PackageContainer = ({
    * "initialFilterState" or "sortableColumns"
    *
    * Also make use of this for any other props that may change at the view level,
-   * such as the app icon and label
+   * such as the app icon, label and visible columns
    */
+
+  const iconKey = 'package';
   return (
     <View
-      appIcon={<AppIcon app="agreements" iconKey="package" />}
+      appIcon={<AppIcon app="agreements" iconKey={iconKey} />}
       data={{
         eresources,
         ...sharedData
       }}
+      iconKey={iconKey}
       initialFilterState={{}}
       initialSearchState={{ query: '' }}
       initialSortState={{ sort: 'name' }}
@@ -108,6 +111,7 @@ const PackageContainer = ({
         failureMessage: () => eresourcesError.message
       }}
       syncToLocationSearch={false}
+      visibleColumns={['name', 'source', 'status']}
     />
   );
 };

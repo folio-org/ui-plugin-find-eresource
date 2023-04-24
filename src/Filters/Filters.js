@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import { Accordion, AccordionSet, FilterAccordionHeader, Selection } from '@folio/stripes/components';
-import { CheckboxFilter } from '@folio/stripes/smart-components';
+import { CheckboxFilter, MultiSelectionFilter } from '@folio/stripes/smart-components';
 
 const FILTERS = [
   'availability',
   'contentType',
+  'publicationType',
   'scope',
   'status',
   'type'
@@ -26,6 +27,7 @@ const Filters = ({
   const [filterState, setFilterState] = useState({
     availability: [],
     contentType: [],
+    publicationType: [],
     scope: [],
     status: [],
     type: []
@@ -130,11 +132,46 @@ const Filters = ({
     );
   };
 
+  const renderAvailabilityFilter = () => {
+    const availabilityFilters = activeFilters.availability || [];
+
+    return (
+      <Accordion
+        displayClearButton={availabilityFilters.length > 0}
+        header={FilterAccordionHeader}
+        id="clickable-availability-filter"
+        label={<FormattedMessage id="ui-agreements.eresources.availability" />}
+        onClearFilter={() => { filterHandlers.clearGroup('availability'); }}
+        separator={false}
+      >
+        <MultiSelectionFilter
+          dataOptions={filterState.availability || []}
+          id="availability-filter"
+          name="availability"
+          onChange={e => filterHandlers.state({ ...activeFilters, availability: e.values })}
+          selectedValues={availabilityFilters}
+        />
+      </Accordion>
+    );
+  };
+
+  const renderTitleFilters = () => ([
+    renderCheckboxFilter('type')
+  ]);
+
+  const renderPackageFilters = () => ([
+    renderCheckboxFilter('status'),
+    renderCheckboxFilter('scope'),
+    renderAvailabilityFilter(),
+    renderCheckboxFilter('contentType'),
+    renderRemoteKbFilter()
+  ]);
+
   return (
     <AccordionSet>
-      {showTitles && renderCheckboxFilter('type')}
       {showTitles && showPackages && renderIsPackageFilter()}
-      {showPackages && renderRemoteKbFilter()}
+      {showTitles && renderTitleFilters()}
+      {showPackages && renderPackageFilters()}
     </AccordionSet>
   );
 };

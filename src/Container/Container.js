@@ -57,6 +57,7 @@ const Container = ({
   const sharedData = {
     availabilityValues: getRefdataValuesByDesc(refdata, AVAILABILITY_CONSTRAINT),
     contentTypeValues: getRefdataValuesByDesc(refdata, CONTENT_TYPE),
+    publicationTypeValues: getRefdataValuesByDesc(refdata, PUB_TYPE),
     scopeValues: getRefdataValuesByDesc(refdata, SCOPE),
     sourceValues: kbs,
     statusValues: getRefdataValuesByDesc(refdata, LIFECYCLE_STATUS),

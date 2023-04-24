@@ -75,15 +75,17 @@ const TitleContainer = ({
    * "initialFilterState" or "sortableColumns"
    *
    * Also make use of this for any other props that may change at the view level,
-   * such as the app icon and label
+   * such as the app icon, label and visible columns
    */
+  const iconKey = 'title';
   return (
     <View
-      appIcon={<AppIcon app="agreements" iconKey="title" />}
+      appIcon={<AppIcon app="agreements" iconKey={iconKey} />}
       data={{
         eresources,
         ...sharedData
       }}
+      iconKey={iconKey}
       initialFilterState={{}}
       initialSearchState={{ query: '' }}
       initialSortState={{ sort: 'name' }}
@@ -108,6 +110,7 @@ const TitleContainer = ({
         failureMessage: () => eresourcesError.message
       }}
       syncToLocationSearch={false}
+      visibleColumns={['name', 'publicationType', 'isbn', 'eissn', 'pissn']}
     />
   );
 };

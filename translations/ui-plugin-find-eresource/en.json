@@ -20,6 +20,11 @@
   "prop.type": "Type",
   "prop.pissn": "ISSN (Print)",
 
+  "prop.status": "Status",
+  "prop.source": "Source",
+  "prop.scope": "Scope",
+  "prop.contentType": "Content type",
+
   "yes": "Yes",
   "no": "No"
 }
