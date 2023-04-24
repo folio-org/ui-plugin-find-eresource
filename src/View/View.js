@@ -17,7 +17,6 @@ import { AppIcon } from '@folio/stripes/core';
 import {
   CollapseFilterPaneButton,
   ExpandFilterPaneButton,
-  SearchAndSortNoResultsMessage,
   SearchAndSortQuery,
 } from '@folio/stripes/smart-components';
 
@@ -30,28 +29,12 @@ import Filters from '../Filters';
 
 import css from './View.css';
 
-const propTypes = {
-  data: PropTypes.shape({
-    eresources: PropTypes.arrayOf(PropTypes.object).isRequired,
-  }),
-  initialFilterState: PropTypes.object,
-  initialSearchState: PropTypes.object,
-  initialSortState: PropTypes.object,
-  onNeedMoreData: PropTypes.func.isRequired,
-  onSelectRow: PropTypes.func.isRequired,
-  queryGetter: PropTypes.func.isRequired,
-  querySetter: PropTypes.func.isRequired,
-  selectedRecordId: PropTypes.string,
-  showPackages: PropTypes.bool,
-  showTitles: PropTypes.bool,
-  sortableColumns: PropTypes.arrayOf(PropTypes.string),
-  source: PropTypes.shape({
-    loaded: PropTypes.func,
-    totalCount: PropTypes.func,
-  }),
-  syncToLocationSearch: PropTypes.bool
-};
-
+/*
+ * Bear in mind that we have split the plugin into 3,
+ * but from the View down all options are managed by
+ * the same components, so need to cater for Packages AND Titles
+ * (and all combinations thereof)
+ */
 const EResources = ({
   data = {},
   initialFilterState = {},
@@ -220,16 +203,7 @@ const EResources = ({
                     }}
                     id="list-eresources"
                     isEmptyMessage={
-                      source || (!showPackages && !showTitles) ? (
-                        <div data-test-eresources-no-results-message>
-                          <SearchAndSortNoResultsMessage
-                            filterPaneIsVisible
-                            searchTerm={query.query ?? ''}
-                            source={source}
-                            toggleFilterPane={toggleFilterPane}
-                          />
-                        </div>
-                      ) : '...'
+                      source || '...'
                     }
                     isSelected={({ item }) => item.id === selectedRecordId}
                     onHeaderClick={onSort}
@@ -253,6 +227,26 @@ const EResources = ({
   );
 };
 
-EResources.propTypes = propTypes;
+EResources.propTypes = {
+  data: PropTypes.shape({
+    eresources: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }),
+  initialFilterState: PropTypes.object,
+  initialSearchState: PropTypes.object,
+  initialSortState: PropTypes.object,
+  onNeedMoreData: PropTypes.func.isRequired,
+  onSelectRow: PropTypes.func.isRequired,
+  queryGetter: PropTypes.func.isRequired,
+  querySetter: PropTypes.func.isRequired,
+  selectedRecordId: PropTypes.string,
+  showPackages: PropTypes.bool,
+  showTitles: PropTypes.bool,
+  sortableColumns: PropTypes.arrayOf(PropTypes.string),
+  source: PropTypes.shape({
+    loaded: PropTypes.func,
+    totalCount: PropTypes.func,
+  }),
+  syncToLocationSearch: PropTypes.bool
+};
 
 export default EResources;

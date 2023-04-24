@@ -10,23 +10,17 @@ import { useOkapiKy } from '@folio/stripes/core';
 import { getRefdataValuesByDesc, useInfiniteFetch } from '@folio/stripes-erm-components';
 
 import View from '../../View';
-
-const [
+import {
   CONTENT_TYPE,
+  ERESOURCES_ELECTRONIC_ENDPOINT,
+  FETCH_INCREMENT,
+  KBS_ENDPOINT,
   LIFECYCLE_STATUS,
   PUB_TYPE,
+  REFDATA_ENDPOINT,
   SCOPE,
   TYPE
-] = [
-  'ContentType.ContentType',
-  'Pkg.LifecycleStatus',
-  'TitleInstance.PublicationType',
-  'Pkg.AvailabilityScope',
-  'TitleInstance.Type',
-];
-
-const RESULT_COUNT_INCREMENT = 25;
-const ERESOURCES_ELECTRONIC_ENDPOINT = 'erm/resource/electronic';
+} from '../../constants';
 
 const JointContainer = ({
   onSelectRow,
@@ -50,7 +44,7 @@ const JointContainer = ({
       SCOPE,
       TYPE
     ],
-    endpoint: 'erm/refdata'
+    endpoint: REFDATA_ENDPOINT
   });
 
   // We only need local session query here, use state
@@ -79,7 +73,7 @@ const JointContainer = ({
         publicationType: 'publicationType.value',
         type: 'type.value'
       },
-      perPage: RESULT_COUNT_INCREMENT,
+      perPage: FETCH_INCREMENT,
     }, (query ?? {}))
   ), [query]);
 
@@ -100,22 +94,16 @@ const JointContainer = ({
     }
   );
 
-  const kbsPath = 'erm/kbs';
   const { data: kbs = [] } = useQuery(
-    ['ERM', 'KnowledgeBases', kbsPath],
-    () => ky.get(kbsPath).json()
+    ['ERM', 'KnowledgeBases', KBS_ENDPOINT],
+    () => ky.get(KBS_ENDPOINT).json()
   );
-
 
   /*
    * We are splitting the Joint/Package/Title sections,
-   * so any specific SASQ props live at this level now
+   * so any specific SASQ props live at this level now, eg
+   * "initialFilterState" or "sortableColumns"
    */
-  const sortableColumns = ['name', 'type'];
-  const initialFilterState = {};
-  const initialSearchState = { query: '' };
-  const initialSortState = { sort: 'name' };
-
   return (
     <View
       data={{
@@ -123,16 +111,21 @@ const JointContainer = ({
         sourceValues: kbs,
         typeValues: getRefdataValuesByDesc(refdata, TYPE),
       }}
-      initialFilterState={initialFilterState}
-      initialSearchState={initialSearchState}
-      initialSortState={initialSortState}
+      initialFilterState={{}}
+      initialSearchState={{ query: '' }}
+      initialSortState={{ sort: 'name' }}
       onNeedMoreData={(_askAmount, index) => fetchNextEresourcesPage({ pageParam: index })}
       onSelectRow={onSelectRow}
       queryGetter={queryGetter}
       querySetter={querySetter}
+      /*
+       * Technically we don't need to pass these two props,
+       * since we know what combination led to this Container,
+       * but for consistency we'll leave it for all 3.
+       */
       showPackages={showPackages}
       showTitles={showTitles}
-      sortableColumns={sortableColumns}
+      sortableColumns={['name', 'type']}
       source={{ // Fake source from useQuery return values;
         totalCount: () => eresourcesCount,
         loaded: () => !areEresourcesLoading,
