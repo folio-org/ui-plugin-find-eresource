@@ -187,6 +187,7 @@ const EResources = ({
                     columnMapping={{
                       name: <FormattedMessage id="ui-plugin-find-eresource.prop.name" />,
                       type: <FormattedMessage id="ui-plugin-find-eresource.prop.type" />,
+                      publicationType: <FormattedMessage id="ui-plugin-find-eresource.prop.publicationType" />,
                       isbn: <FormattedMessage id="ui-plugin-find-eresource.prop.isbn" />,
                       eissn: <FormattedMessage id="ui-plugin-find-eresource.prop.eissn" />,
                       pissn: <FormattedMessage id="ui-plugin-find-eresource.prop.pissn" />,
@@ -215,6 +216,7 @@ const EResources = ({
                         );
                       },
                       type: e => <EResourceType resource={e} />,
+                      publicationType: e => <EResourceType resource={e} />,
                       isbn: e => getResourceIdentifier(e._object, 'isbn'),
                       eissn: e => getResourceIdentifier(e._object, 'eissn'),
                       pissn: e => getResourceIdentifier(e._object, 'pissn') ?? getSiblingIdentifier(e._object, 'issn'),
