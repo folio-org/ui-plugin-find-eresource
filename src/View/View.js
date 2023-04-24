@@ -17,6 +17,7 @@ import { AppIcon } from '@folio/stripes/core';
 import {
   CollapseFilterPaneButton,
   ExpandFilterPaneButton,
+  SearchAndSortNoResultsMessage,
   SearchAndSortQuery,
 } from '@folio/stripes/smart-components';
 
@@ -203,7 +204,16 @@ const EResources = ({
                     }}
                     id="list-eresources"
                     isEmptyMessage={
-                      source || '...'
+                      source ? (
+                        <div data-test-eresources-no-results-message>
+                          <SearchAndSortNoResultsMessage
+                            filterPaneIsVisible
+                            searchTerm={query.query ?? ''}
+                            source={source}
+                            toggleFilterPane={toggleFilterPane}
+                          />
+                        </div>
+                      ) : '...'
                     }
                     isSelected={({ item }) => item.id === selectedRecordId}
                     onHeaderClick={onSort}
