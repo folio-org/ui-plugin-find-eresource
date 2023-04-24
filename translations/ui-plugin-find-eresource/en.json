@@ -24,6 +24,7 @@
   "prop.source": "Source",
   "prop.scope": "Scope",
   "prop.contentType": "Content type",
+  "prop.publicationType": "Publication type",
 
   "yes": "Yes",
   "no": "No"
