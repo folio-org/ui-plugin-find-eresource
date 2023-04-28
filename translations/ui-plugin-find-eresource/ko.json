@@ -14,5 +14,12 @@
     "prop.type": "유형",
     "prop.pissn": "ISSN (인쇄)",
     "yes": "예",
-    "no": "아니요"
+    "no": "아니요",
+    "packages": "Packages",
+    "titles": "Titles",
+    "prop.status": "Status",
+    "prop.source": "Source",
+    "prop.scope": "Scope",
+    "prop.contentType": "Content type",
+    "prop.publicationType": "Publication type"
 }

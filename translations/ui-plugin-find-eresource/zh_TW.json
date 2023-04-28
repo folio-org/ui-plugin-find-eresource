@@ -14,5 +14,12 @@
     "prop.type": "類型",
     "prop.pissn": "國際標準期刊號（紙本期刊）ISSN (Print)",
     "yes": "是",
-    "no": "否"
+    "no": "否",
+    "packages": "Packages",
+    "titles": "Titles",
+    "prop.status": "Status",
+    "prop.source": "Source",
+    "prop.scope": "Scope",
+    "prop.contentType": "Content type",
+    "prop.publicationType": "Publication type"
 }

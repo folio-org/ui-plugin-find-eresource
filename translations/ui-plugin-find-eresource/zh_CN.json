@@ -14,5 +14,12 @@
     "prop.type": "类型",
     "prop.pissn": "ISSN（印本）",
     "yes": "是",
-    "no": "否"
+    "no": "否",
+    "packages": "资源包",
+    "titles": "标题",
+    "prop.status": "状态",
+    "prop.source": "来源",
+    "prop.scope": "范围",
+    "prop.contentType": "内容类型",
+    "prop.publicationType": "出版物类型"
 }

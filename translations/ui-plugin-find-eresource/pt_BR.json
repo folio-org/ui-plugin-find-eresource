@@ -14,5 +14,12 @@
     "prop.type": "Tipo",
     "prop.pissn": "ISSN (Impresso)",
     "yes": "Sim",
-    "no": "Não"
+    "no": "Não",
+    "packages": "Pacotes",
+    "titles": "Títulos",
+    "prop.status": "Status",
+    "prop.source": "Fonte",
+    "prop.scope": "Escopo",
+    "prop.contentType": "Tipo de conteúdo",
+    "prop.publicationType": "Tipo de publicação"
 }

@@ -14,5 +14,12 @@
     "prop.type": "Typ",
     "prop.pissn": "ISSN (Druckausgabe)",
     "yes": "Ja",
-    "no": "Nein"
+    "no": "Nein",
+    "packages": "Packages",
+    "titles": "Titles",
+    "prop.status": "Status",
+    "prop.source": "Source",
+    "prop.scope": "Scope",
+    "prop.contentType": "Content type",
+    "prop.publicationType": "Publication type"
 }

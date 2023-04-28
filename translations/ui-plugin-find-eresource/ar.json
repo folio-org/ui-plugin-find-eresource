@@ -14,5 +14,12 @@
     "prop.type": "النوع",
     "prop.pissn": "ردمد (ورقي)",
     "yes": "نعم",
-    "no": "لا"
+    "no": "لا",
+    "packages": "Packages",
+    "titles": "Titles",
+    "prop.status": "Status",
+    "prop.source": "Source",
+    "prop.scope": "Scope",
+    "prop.contentType": "Content type",
+    "prop.publicationType": "Publication type"
 }

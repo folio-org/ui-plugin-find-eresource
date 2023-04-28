@@ -14,5 +14,12 @@
     "prop.type": "Type",
     "prop.pissn": "ISSN (Print)",
     "yes": "はい",
-    "no": "いいえ"
+    "no": "いいえ",
+    "packages": "パッケージ",
+    "titles": "タイトル",
+    "prop.status": "状態",
+    "prop.source": "Source",
+    "prop.scope": "Scope",
+    "prop.contentType": "コンテンツタイプ",
+    "prop.publicationType": "出版物タイプ"
 }

@@ -1,6 +1,6 @@
 {
-    "meta.title": "E-resource Finder Plugin",
-    "permission.search": "Find E-resource Plugin: Search e-resources",
+    "meta.title": "Plugin del buscador de recursos electrónicos",
+    "permission.search": "Buscar recursos electrónicos Plugin: Buscar recursos electrónicos",
     "selectEresource": "Seleccionar recurso electrónico",
     "eresources": "Recursos electrónicos",
     "package": "Paquete",
@@ -10,9 +10,16 @@
     "prop.isbn": "ISBN",
     "prop.isPackage": "Paquete",
     "prop.name": "Nombre",
-    "prop.sourceKb": "External data source",
+    "prop.sourceKb": "Fuente de datos externa",
     "prop.type": "Tipo",
     "prop.pissn": "ISSN (Impreso)",
     "yes": "Sí",
-    "no": "No"
+    "no": "No",
+    "packages": "Paquetes",
+    "titles": "Títulos",
+    "prop.status": "Estado",
+    "prop.source": "Fuente",
+    "prop.scope": "Alcance",
+    "prop.contentType": "Tipo de contenido",
+    "prop.publicationType": "Tipo de publicación"
 }
