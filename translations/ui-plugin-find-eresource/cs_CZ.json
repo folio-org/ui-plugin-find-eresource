@@ -14,5 +14,12 @@
     "prop.type": "Typ",
     "prop.pissn": "ISSN (Tisk)",
     "yes": "Ano",
-    "no": "Ne"
+    "no": "Ne",
+    "packages": "Balíčky",
+    "titles": "Názvy",
+    "prop.status": "Stav",
+    "prop.source": "Zdroj",
+    "prop.scope": "Rozsah",
+    "prop.contentType": "Typ obsahu",
+    "prop.publicationType": "Typ publikace"
 }

@@ -14,5 +14,12 @@
     "prop.type": "Rodzaj",
     "prop.pissn": "ISSN (druk)",
     "yes": "Tak",
-    "no": "Nie"
+    "no": "Nie",
+    "packages": "Packages",
+    "titles": "Titles",
+    "prop.status": "Status",
+    "prop.source": "Source",
+    "prop.scope": "Scope",
+    "prop.contentType": "Content type",
+    "prop.publicationType": "Publication type"
 }
