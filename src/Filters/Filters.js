@@ -107,34 +107,6 @@ const Filters = ({
     );
   };
 
-  const renderRemoteKbFilter = () => {
-    const dataOptions = data.sourceValues.map(remoteKb => ({
-      label: remoteKb.name,
-      value: remoteKb.id,
-    }));
-
-    const remoteKbFilters = activeFilters.remoteKb || [];
-
-    return (
-      <Accordion
-        key="render-remote-kb-filter"
-        displayClearButton={remoteKbFilters.length > 0}
-        header={FilterAccordionHeader}
-        id="filter-accordion-remoteKb"
-        label={<FormattedMessage id="ui-plugin-find-eresource.prop.sourceKb" />}
-        onClearFilter={() => { filterHandlers.clearGroup('remoteKb'); }}
-        separator={false}
-      >
-        <Selection
-          dataOptions={dataOptions}
-          id="remoteKb-filter"
-          onChange={value => filterHandlers.state({ ...activeFilters, remoteKb: [value] })}
-          value={remoteKbFilters[0] || ''}
-        />
-      </Accordion>
-    );
-  };
-
   const renderAvailabilityFilter = () => {
     const availabilityFilters = activeFilters.availability || [];
 
@@ -169,7 +141,6 @@ const Filters = ({
     renderCheckboxFilter('scope'),
     renderAvailabilityFilter(),
     renderCheckboxFilter('contentType'),
-    renderRemoteKbFilter()
   ]);
 
   return (
