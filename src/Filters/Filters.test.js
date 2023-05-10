@@ -3,7 +3,7 @@ import { waitFor } from '@testing-library/dom';
 
 
 import { renderWithIntl } from '@folio/stripes-erm-testing';
-import { Accordion, Checkbox, Selection, SelectionList as SelectListInteractor } from '@folio/stripes-testing';
+import { Accordion, Checkbox } from '@folio/stripes-testing';
 import { MemoryRouter } from 'react-router-dom';
 
 import { activeFilters, data } from './testResources';
