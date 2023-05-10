@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import { Accordion, AccordionSet, FilterAccordionHeader, Selection } from '@folio/stripes/components';
+import { Accordion, AccordionSet, FilterAccordionHeader } from '@folio/stripes/components';
 import { CheckboxFilter, MultiSelectionFilter } from '@folio/stripes/smart-components';
 
 const FILTERS = [
