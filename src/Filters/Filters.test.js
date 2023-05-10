@@ -3,7 +3,7 @@ import { waitFor } from '@testing-library/dom';
 
 
 import { renderWithIntl } from '@folio/stripes-erm-testing';
-import { Accordion, Checkbox, Selection, SelectionList as SelectListInteractor } from '@folio/stripes-testing';
+import { Accordion, Checkbox } from '@folio/stripes-testing';
 import { MemoryRouter } from 'react-router-dom';
 
 import { activeFilters, data } from './testResources';
@@ -88,16 +88,6 @@ describe('Filters', () => {
 
   test('renders the IsPackage Accordion', async () => {
     await Accordion('Is package').exists();
-  });
-
-  test('renders the External data source Accordion', async () => {
-    await Accordion('External data source').exists();
-  });
-
-  it('choosing an external data source option', async () => {
-    await Selection({ id: 'remoteKb-filter' }).exists();
-    await Selection().open();
-    await SelectListInteractor({ optionCount: 1 }).exists();
   });
 });
 
