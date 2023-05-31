@@ -1,7 +1,7 @@
 {
     "meta.title": "Plugin pro vyhledávač e-zdrojů",
     "permission.search": "Najít plugin E-zdroj: Vyhledávání e-zdrojů",
-    "selectEresource": "Vyberte e-zdroj",
+    "selectEresource": "Vybrat e-zdroj",
     "eresources": "E-zdroje",
     "package": "Balíček",
     "searchInputLabel": "Vyhledávání v e-zdrojích",
