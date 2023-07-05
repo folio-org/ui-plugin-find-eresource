@@ -23,6 +23,8 @@ of the Module Developer's Guide.
 | `showPackages` | boolean | Optional prop to only display the packages eresources and its necessary filters | | true |
 | `showTitles` | boolean | Optional prop to only display the title eresources and its necessary filters | | true |
 | `modalLabel` | string/object | Optional label to use for the Modal's header. May be a string or a translation tag yielded by `<FormattedMessage>` | |
+| `defaultOpen` | boolean | A boolean prop to ensure the modal begins open on first render | false |
+| `onClose` | func: () => {} | A callback which, when provided, will fire on close of modal |  |
 
 **Note:** Both `showPackages` and `showTitles` props should not be passed as false. One of them needs to be true if at all both the props are being passed.
 

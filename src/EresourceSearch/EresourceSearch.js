@@ -9,21 +9,21 @@ import Modal from '../Modal';
 
 const triggerId = 'find-eresource-trigger';
 
-const EresourceSearch = (props) => {
-  const {
-    renderTrigger
-  } = props;
-
+const EresourceSearch = ({
+  defaultOpen,
+  onClose,
+  renderTrigger,
+  ...props
+}) => {
   // Piggyback on the translations `ui-agreements` already sets up for now
   // The likelihood of anyone running ui-plugin-find-agreement and NOT ui-agreements seems very low.
   const addKey = useIntlKeyStore(state => state.addKey);
   addKey('ui-agreements');
 
-
   const modalRef = useRef();
   const modalTrigger = useRef();
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(defaultOpen || false);
 
   const openModal = () => {
     setOpen(true);
@@ -34,6 +34,10 @@ const EresourceSearch = (props) => {
 
     if (modalRef.current && modalTrigger.current && contains(modalRef.current, document.activeElement)) {
       modalTrigger.current.focus();
+    }
+
+    if (onClose) {
+      onClose();
     }
   };
 
