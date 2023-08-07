@@ -1,8 +1,6 @@
-import { React } from 'react';
-
-import { renderWithIntl } from '@folio/stripes-erm-testing';
-import { Button } from '@folio/stripes-testing';
 import { MemoryRouter } from 'react-router-dom';
+
+import { Button, renderWithIntl } from '@folio/stripes-erm-testing';
 import translationsProperties from '../../test/helpers';
 import EresourceSearchModal from './Modal';
 

@@ -1,11 +1,10 @@
-import { waitFor } from '@testing-library/dom';
+import { waitFor } from '@folio/jest-config-stripes/testing-library/react';
 
 import { Modal as MockModal } from '@folio/stripes/components';
 
-import { Button } from '@folio/stripes-testing';
-
 import {
-  IconButtonInteractor as IconButton,
+  Button,
+  IconButton,
   mockKintComponents,
   renderWithIntl
 } from '@folio/stripes-erm-testing';
@@ -27,11 +26,6 @@ jest.mock('../Modal', () => ({
   </MockModal>
 ));
 
-jest.mock('@k-int/stripes-kint-components', () => ({
-  ...jest.requireActual('@k-int/stripes-kint-components'),
-  ...mockKintComponents
-}));
-
 const onCloseMock = jest.fn();
 
 describe('EresourceSearch', () => {
@@ -52,13 +46,17 @@ describe('EresourceSearch', () => {
       const { queryByText } = renderComponent;
 
       expect(queryByText('Modal')).not.toBeInTheDocument();
-      await Button().click();
+      await waitFor(async () => {
+        await Button().click();
+      });
       expect(queryByText('Modal')).toBeInTheDocument();
     });
 
     describe('opening the modal', () => {
       beforeEach(async () => {
-        await Button().click();
+        await waitFor(async () => {
+          await Button().click();
+        });
       });
 
       test('renders the Modal component', async () => {
@@ -68,7 +66,9 @@ describe('EresourceSearch', () => {
 
       describe('closing the modal', () => {
         beforeEach(async () => {
-          await IconButton('Dismiss modal').click();
+          await waitFor(async () => {
+            await IconButton('Dismiss modal').click();
+          });
         });
 
         test('onClose was called', async () => {

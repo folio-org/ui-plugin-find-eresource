@@ -1,6 +1,8 @@
 # Change history for ui-plugin-find-eresource
 
-## 5.1.0 In progress
+## 6.0.0 In progress
+  * STRIPES-870 BREAKING upgrade react to v18
+    * ERM-2988 upgrade ui-plugin-find-eresource React to v18
 ## 5.0.2 2023-02-22
 * ERM-2615 Drop unneeded `react-redux`.
 * ERM-2558 Increment ui-plugin-find-eresource to Stripes v8

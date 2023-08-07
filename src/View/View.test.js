@@ -1,7 +1,12 @@
-
-import { renderWithIntl } from '@folio/stripes-erm-testing';
 import { MemoryRouter } from 'react-router-dom';
-import { Pane, SearchField, MultiColumnList } from '@folio/stripes-testing';
+
+import {
+  MultiColumnList,
+  Pane,
+  renderWithIntl,
+  SearchField,
+} from '@folio/stripes-erm-testing';
+
 import translationsProperties from '../../test/helpers';
 import View from './View';
 
