@@ -20,6 +20,6 @@
     "prop.status": "Status",
     "prop.source": "Source",
     "prop.scope": "Scope",
-    "prop.contentType": "Content type",
+    "prop.contentType": "Typ treści",
     "prop.publicationType": "Publication type"
 }
