@@ -1,9 +1,16 @@
 # Change history for ui-plugin-find-eresource
 
-## 6.0.0 In progress
-  * STRIPES-870 BREAKING upgrade react to v18
-    * ERM-2988 upgrade ui-plugin-find-eresource React to v18
-  * ERM-3033 *BREAKING* bump `react-intl` to `v6.4.4`.
+## 6.0.0 2023-10-12
+* ERM-3032 *BREAKING* bump `react-intl` to `v6.4.4`.
+* ERM-3001 Update Node.js to v18 in GitHub Actions
+* ERM-2964 Reinstate defaultOpen and onClose prop in ui-plugin-find-eresource
+* ERM-2918 Implement 25 results limit in ui-plugin-find-eresource
+* ERM-2917 Implement new title search in ui-plugin-find-eresource
+* ERM-2916 Implement new pakcage search in ui-pluging-find-eresource
+* ERM-2641 Upgrade to Grails 5 (including Hibernate 5.6.x) for Poppy
+  * Added okapi interface dependency on new erm interface 6.0
+* STRIPES-870 *BREAKING* upgrade react to v18
+  * ERM-2988 upgrade ui-plugin-find-eresource React to v18
 
 ## 5.0.2 2023-02-22
 * ERM-2615 Drop unneeded `react-redux`.
