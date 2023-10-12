@@ -1,5 +1,7 @@
 # Change history for ui-plugin-find-eresource
 
+## 6.1.0 In progress
+
 ## 6.0.0 2023-10-12
 * ERM-3032 *BREAKING* bump `react-intl` to `v6.4.4`.
 * ERM-3001 Update Node.js to v18 in GitHub Actions
