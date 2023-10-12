@@ -5,7 +5,6 @@ import { Modal as MockModal } from '@folio/stripes/components';
 import {
   Button,
   IconButton,
-  mockKintComponents,
   renderWithIntl
 } from '@folio/stripes-erm-testing';
 
