@@ -211,15 +211,15 @@ const EResources = ({
                             iconKey={iconKey}
                             size="small"
                           >
-                            {e._object?.longName ?? e.name}
+                            {e?.longName ?? e.name}
                           </AppIcon>
                         );
                       },
                       type: e => <EResourceType resource={e} />,
                       publicationType: e => <EResourceType resource={e} />,
-                      isbn: e => getResourceIdentifier(e._object, 'isbn'),
-                      eissn: e => getResourceIdentifier(e._object, 'eissn'),
-                      pissn: e => getResourceIdentifier(e._object, 'pissn') ?? getSiblingIdentifier(e._object, 'issn'),
+                      isbn: e => getResourceIdentifier(e, 'isbn'),
+                      eissn: e => getResourceIdentifier(e, 'eissn') ?? getResourceIdentifier(e, 'issn'),
+                      pissn: e => getResourceIdentifier(e, 'pissn') ?? getSiblingIdentifier(e, 'issn'),
                       source: e => (e.source),
                       status: e => (e.lifecycleStatus?.label),
                     }}
