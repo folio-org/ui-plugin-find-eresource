@@ -2,6 +2,9 @@
 
 ## 6.1.0 In progress
 
+## 6.0.1 2023-11-09
+* ERM-3079 Identifiers ISBN, ISSN (Online), ISSN (Print) do not display in e-resource plugin when doing title search
+
 ## 6.0.0 2023-10-12
 * ERM-3032 *BREAKING* bump `react-intl` to `v6.4.4`.
 * ERM-3001 Update Node.js to v18 in GitHub Actions
