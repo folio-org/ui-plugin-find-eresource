@@ -15,11 +15,11 @@
     "prop.pissn": "ISSN (Druckausgabe)",
     "yes": "Ja",
     "no": "Nein",
-    "packages": "Packages",
-    "titles": "Titles",
+    "packages": "Pakete",
+    "titles": "Titel",
     "prop.status": "Status",
-    "prop.source": "Source",
+    "prop.source": "Quelle",
     "prop.scope": "Scope",
-    "prop.contentType": "Content type",
+    "prop.contentType": "Inhaltstyp",
     "prop.publicationType": "Publication type"
 }
