@@ -1,6 +1,7 @@
 # Change history for ui-plugin-find-eresource
 
 ## 6.1.0 In progress
+* ERM-3129 Remove explicit typescript version
 
 ## 6.0.1 2023-11-09
 * ERM-3079 Identifiers ISBN, ISSN (Online), ISSN (Print) do not display in e-resource plugin when doing title search
