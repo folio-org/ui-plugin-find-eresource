@@ -1,5 +1,7 @@
 # Change history for ui-plugin-find-eresource
 
+## 7.1.0 In progress
+
 ## 7.0.1 2024-03-22
 * ERM-3129 Remove explicit typescript version
 * Bumped folio dependencies
