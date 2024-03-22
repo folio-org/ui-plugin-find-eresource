@@ -1,7 +1,9 @@
 # Change history for ui-plugin-find-eresource
 
-## 6.1.0 In progress
+## 7.0.0 2024-03-22
 * ERM-3129 Remove explicit typescript version
+* Bumped folio dependencies
+* *BREAKING* Change interface dependency for erm to just 7.0
 
 ## 6.0.1 2023-11-09
 * ERM-3079 Identifiers ISBN, ISSN (Online), ISSN (Print) do not display in e-resource plugin when doing title search
