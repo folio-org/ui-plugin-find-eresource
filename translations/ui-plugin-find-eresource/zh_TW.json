@@ -1,6 +1,6 @@
 {
-    "meta.title": "電子資源查找器（插件）",
-    "permission.search": "電子資源查找器（插件）：查詢電子資源",
+    "meta.title": "電子資源查找器（外掛程式）",
+    "permission.search": "電子資源查找器（外掛程式）：查詢電子資源",
     "selectEresource": "選擇電子資源",
     "eresources": "電子資源",
     "package": "資源包",
