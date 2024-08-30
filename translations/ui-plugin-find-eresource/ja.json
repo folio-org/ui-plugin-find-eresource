@@ -1,7 +1,7 @@
 {
     "meta.title": "E-resource Finder Plugin",
     "permission.search": "Find E-resource Plugin: Search e-resources",
-    "selectEresource": "Select e-resource",
+    "selectEresource": "電子リソースの選択",
     "eresources": "電子リソース",
     "package": "パッケージ",
     "searchInputLabel": "電子リソースの検索",
