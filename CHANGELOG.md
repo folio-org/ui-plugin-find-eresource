@@ -6,6 +6,7 @@
 * ERM-3129 Remove explicit typescript version
 * Bumped folio dependencies
 * *BREAKING* Change interface dependency for erm to just 7.0
+* FOLIO-4086 Fix GitHub Actions workflow not running for tags
 
 ## 6.0.1 2023-11-09
 * ERM-3079 Identifiers ISBN, ISSN (Online), ISSN (Print) do not display in e-resource plugin when doing title search
