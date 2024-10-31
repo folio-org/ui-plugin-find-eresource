@@ -1,5 +1,7 @@
 # Change history for ui-plugin-find-eresource
 
+## 7.2.0 IN PROGRESS
+
 ## 7.1.0 2024-10-31
 * ERM-3383 Update module license and guidance for ui-plugin-find-eresource
 * ERM-3356 Review and cleanup Module Descriptor for ui-plugin-find-eresource
