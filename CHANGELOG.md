@@ -1,12 +1,16 @@
 # Change history for ui-plugin-find-eresource
 
-## 7.1.0 In progress
+## 7.1.0 2024-10-31
+* ERM-3383 Update module license and guidance for ui-plugin-find-eresource
+* ERM-3356 Review and cleanup Module Descriptor for ui-plugin-find-eresource
+* ERM-3237 React v19: refactor ui-plugin-find-eresource away from default props for functional components
+* ERM-3165 Replace moment with dayjs across app suite
+* FOLIO-4086 Fix GitHub Actions workflow not running for tags
 
 ## 7.0.1 2024-03-22
 * ERM-3129 Remove explicit typescript version
 * Bumped folio dependencies
 * *BREAKING* Change interface dependency for erm to just 7.0
-* FOLIO-4086 Fix GitHub Actions workflow not running for tags
 
 ## 6.0.1 2023-11-09
 * ERM-3079 Identifiers ISBN, ISSN (Online), ISSN (Print) do not display in e-resource plugin when doing title search

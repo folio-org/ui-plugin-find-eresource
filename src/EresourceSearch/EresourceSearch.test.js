@@ -43,12 +43,7 @@ describe('EresourceSearch', () => {
 
     test('does not render the Modal component', async () => {
       const { queryByText } = renderComponent;
-
       expect(queryByText('Modal')).not.toBeInTheDocument();
-      await waitFor(async () => {
-        await Button().click();
-      });
-      expect(queryByText('Modal')).toBeInTheDocument();
     });
 
     describe('opening the modal', () => {
@@ -60,7 +55,9 @@ describe('EresourceSearch', () => {
 
       test('renders the Modal component', async () => {
         const { queryByText } = renderComponent;
-        expect(queryByText('Modal')).toBeInTheDocument();
+        await waitFor(() => {
+          expect(queryByText('Modal')).toBeInTheDocument();
+        });
       });
 
       describe('closing the modal', () => {
