@@ -6,7 +6,7 @@
     "package": "資源包",
     "searchInputLabel": "查詢電子資源",
     "title": "題名",
-    "prop.eissn": "ISSN（線上）",
+    "prop.eissn": "ISSN ( 線上 )",
     "prop.isbn": "國際標準書號 ISBN",
     "prop.isPackage": "是否為資源包？",
     "prop.name": "名稱",
