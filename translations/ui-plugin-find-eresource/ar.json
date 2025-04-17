@@ -12,7 +12,7 @@
     "prop.name": "الاسم",
     "prop.sourceKb": "مصدر بيانات خارجي",
     "prop.type": "النوع",
-    "prop.pissn": "ردمد (ورقي)",
+    "prop.pissn": "ردمد (مطبوع)",
     "yes": "نعم",
     "no": "لا",
     "packages": "Packages",
@@ -20,6 +20,6 @@
     "prop.status": "Status",
     "prop.source": "Source",
     "prop.scope": "Scope",
-    "prop.contentType": "Content type",
+    "prop.contentType": "نوع المحتوى",
     "prop.publicationType": "Publication type"
 }
