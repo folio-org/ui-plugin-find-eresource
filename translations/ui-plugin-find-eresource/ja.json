@@ -18,7 +18,7 @@
     "packages": "パッケージ",
     "titles": "タイトル",
     "prop.status": "ステータス",
-    "prop.source": "Source",
+    "prop.source": "ソース",
     "prop.scope": "Scope",
     "prop.contentType": "コンテンツタイプ",
     "prop.publicationType": "出版物タイプ"
