@@ -1,6 +1,7 @@
 # Change history for ui-plugin-find-eresource
 
-## 8.1.0 IN PROGRESS
+## 8.1.0 2026-04-17
+  * Updated dependencies for Trillium release
 
 ## 8.0.0 2025-03-13
   * ERM-3616 *BREAKING* Stripes v10 dependencies update
