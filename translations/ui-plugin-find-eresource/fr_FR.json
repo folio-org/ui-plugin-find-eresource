@@ -16,10 +16,10 @@
     "yes": "Oui",
     "no": "Non",
     "packages": "Bouquets",
-    "titles": "Titles",
-    "prop.status": "Status",
+    "titles": "Titres",
+    "prop.status": "Statut",
     "prop.source": "Source",
     "prop.scope": "Scope",
-    "prop.contentType": "Content type",
-    "prop.publicationType": "Publication type"
+    "prop.contentType": "Type de contenu",
+    "prop.publicationType": "Type de publication"
 }
