@@ -1,6 +1,7 @@
 # Change history for ui-plugin-find-eresource
 
-## 8.2.0 IN PROGRESS
+## 8.1.1 2026-05-28
+  * Updated dependencies for Trillium release
 
 ## 8.1.0 2026-04-17
   * Updated dependencies for Trillium release
